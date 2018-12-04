@@ -21,6 +21,6 @@ Jorge Jesús Chaparro Ibarra se encarga de:
 * Clase Profesor
 * Modificar Alumno
 * Gestión de Líderes
-* Cargar Copia
+* Cargar Copia 
 
 Horas totales de trabajo 15 horas aproximadamente.
