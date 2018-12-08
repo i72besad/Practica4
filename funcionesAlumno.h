@@ -2,6 +2,7 @@
 #define FUNCIONESALUMNO_H
 
 void BuscarAlumno();
+void MostrarAlumno();
 
 
 
