@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class Jugador: public Persona{
+class Alumno: public Persona{
 
 private:
 	
@@ -17,7 +17,7 @@ private:
 	int Equipo_;
 
 public:
-	Profesor(string dni, string nombre, string apellidos, int telefono=0, string direccion="",
+	Alumno(string dni, string nombre, string apellidos, int telefono=0, string direccion="",
 	string email="", int CursoMasAlto=1,int Equipo, bool lider):Persona(dni, nombre, apellidos, telefono, direccion, 
 	email){lider_=lider; CursoMasAlto_=CursoMasAlto; Equipo_=Equipo;};
 
