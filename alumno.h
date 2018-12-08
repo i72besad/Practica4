@@ -17,12 +17,18 @@ private:
 	int Equipo_;
 
 public:
-	bool setlider();
-	void getLider();
-	int setCursoMasAlto();
-	void getCursoMasAlto();
-	int setEquipo();
-	void getEquipo();
+	Profesor(string dni, string nombre, string apellidos, int telefono=0, string direccion="",
+	string email="", int CursoMasAlto=1,int Equipo, bool lider):Persona(dni, nombre, apellidos, telefono, direccion, 
+	email){lider_=lider; CursoMasAlto_=CursoMasAlto; Equipo_=Equipo;};
+
+	inline void setlider(bool lider){lider_=lider;};
+	inline bool getLider(){return lider_;};
+
+	inline void setCursoMasAlto(int CursoMasAlto){CursoMasAlto_=CursoMasAlto;};
+	inline int getCursoMasAlto(){return CursoMasAlto_;};
+
+	inline void setEquipo(int Equipo){Equipo_=Equipo;};
+	inline int getEquipo(){return Equipo_;};
 
 }; 
 	
