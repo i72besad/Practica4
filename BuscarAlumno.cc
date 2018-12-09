@@ -73,7 +73,7 @@ void BusquedaDNI(){
 }
 
 
-void BusquedaApellido(){//Añadir la opcion de que se repite apellido y que te mande a BusquedaDNI()
+void BusquedaApellido(){
 
 	int opc2,tipo;
 	string Apellido;
@@ -145,33 +145,8 @@ void Incorrecto(int opc2){
 
 
 
-/*void Buscar(string palabra){
 
-	string fichero,s;
-	fstream ficheroEntrada;
-	bool encontrado=false;
-	cout<<"Diga el nombre del fichero:"<<endl;
-	getline(cin,fichero);
-
-	ficheroEntrada.open(fichero.c_str(), ios::in);
-	if(ficheroEntrada.is_open()){
-		while(getline(ficheroEntrada,s)){
-			if(s.find(palabra) != string::npos){
-				encontrado=true;
-				cout<<"palabra encontrada"<<endl;
-			}
-		}if(encontrado==false){
-				cout<<"palabra no encontrada"<<endl;
-			}
-		ficheroEntrada.close();
-	}else{
-		cout<<"Error de apertura del fichero"<<endl;
-	}
-
-}*/
-
-
-int Buscar(string palabra){//Añadir el caso de que se repitan apellidos
+int Buscar(string palabra){
 	int cont=0;
 	string fichero,s;
 	fstream ficheroEntrada;
