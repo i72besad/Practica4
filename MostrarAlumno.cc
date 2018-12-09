@@ -27,7 +27,7 @@ void MostrarAlumno(string DNI){
 
 
 	cout<<"\n\n\tDNI--> "<<alumno.getDNI()<<endl;
-	cout<<"\n\n\tNombre--> "<<alumno.getnombre()<<endl;
+	cout<<"\n\n\tNombre--> "<<alumno.getNombre()<<endl;
 	cout<<"\n\n\tApellidos--> "<<alumno.getApellidos()<<endl;
 	cout<<"\n\n\tTelefono--> "<<alumno.getTelefono()<<endl;
 	cout<<"\n\n\tDireccion--> "<<alumno.getDireccion()<<endl;
