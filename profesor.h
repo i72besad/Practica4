@@ -16,11 +16,11 @@ public:
 		string email="", int ID=0, bool Rol=false):Persona(dni, nombre, apellidos, telefono, direccion, 
 		email){ID_=ID; Rol_=Rol;};
 
-	//Modificador y Observador de Rol
+	//Set y Get de Rol
 		inline bool setRol();
 		inline bool getRol(){return Rol_;};
 
-	//Modificador de Obsercador de ID
+	//Set y Get de ID
 		inline void setID();
 		inline int getID(){return ID_;};
 };
