@@ -172,7 +172,7 @@ void Incorrecto(int opc2){
 
 
 int Buscar(string palabra){//Añadir el caso de que se repitan apellidos
-
+	int cont=0;
 	string fichero,s;
 	fstream ficheroEntrada;
 	bool encontrado=false;
@@ -183,13 +183,20 @@ int Buscar(string palabra){//Añadir el caso de que se repitan apellidos
 	if(ficheroEntrada.is_open()){
 		while(getline(ficheroEntrada,s)){
 			if(s.find(palabra) != string::npos){
-				ficheroEntrada.close();
-				return 0;
+				encontrado=true;
+				cont++;
 			}
-		}if(encontrado==false){
+		}if(cont>1){
+			cout<<"Más de un alumno con el mismo apellido, derivando a escribir el DNI del alumno específico\n"<<endl;
+			BusquedaDNI();
+		}
+		if(encontrado==false){
 			ficheroEntrada.close();
 			return 1;
-			}
+		}else{
+			ficheroEntrada.close();
+			return 0;
+		}
 		
 	}else{
 		cout<<"Error al abrir el fichero, no existe"<<endl;
