@@ -6,7 +6,7 @@ void BusquedaDNI();
 void BusquedaApellido();
 void Correcto(int opc2, string DNI);
 void Incorrecto(int opc2);
-
+int Buscar(string palabra);
 
 
 #endif
