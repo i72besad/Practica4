@@ -35,13 +35,15 @@ void BuscarAlumno(){
 
 void BusquedaDNI(){
 
-	int opc2;
+	int opc2,tipo;
 	string DNI;
 
 	cout<<"Introduzca el DNI:"<<endl;
 	cin>>DNI;
 	//Averiguar como comprobar que el DNI esta bien escrito
-	if(DNI==/*funcion que busque en la BD*/){
+
+	tipo=Buscar(DNI);
+	if(tipo==0){
 		cout<<"Alumno encontrado, ¿que desea hacer?"<<endl;
 		cout<<"\n\n\t0-->Mostrar\n\t1-->Modificar\n\t2-->Borrar"<<endl;
 		cin>>opc2;
@@ -55,7 +57,7 @@ void BusquedaDNI(){
 		}
 		Correcto(opc2,DNI);
 		
-	}else{
+	}if(tipo==1){
 		cout<<"Alumno no encontrado, ¿desea insertar uno nuevo?"<<endl;
 		cout<<"\n\n\t0-->Insertar\n\t1-->Buscar de nuevo"<<endl;
 		if(opc2<0 || opc2>1){
@@ -71,15 +73,17 @@ void BusquedaDNI(){
 }
 
 
-void BusquedaApellido(){
+void BusquedaApellido(){//Añadir la opcion de que se repite apellido y que te mande a BusquedaDNI()
 
-	int opc2;
+	int opc2,tipo;
 	string Apellido;
 
 	cout<<"Introduzca el Apellido:"<<endl;
 	cin>>Apellido;
 
-	if(Apellido==/*funcion que busque en la BD*/){
+	tipo=Buscar(Apellido);
+
+	if(tipo==0){
 		string DNI=getDNI();
 		cout<<"Alumno encontrado, ¿que desea hacer?"<<endl;
 		cout<<"\n\n\t0-->Mostrar\n\t1-->Modificar\n\t2-->Borrar"<<endl;
@@ -94,7 +98,7 @@ void BusquedaApellido(){
 		}
 		Correcto(opc2,DNI);
 
-	}else{
+	}if(tipo==1){
 		cout<<"Alumno no encontrado, ¿desea insertar uno nuevo?"<<endl;
 		cout<<"\n\n\t0-->Insertar\n\t1-->Buscar de nuevo"<<endl;
 		if(opc2<0 || opc2>2){
@@ -139,3 +143,56 @@ void Incorrecto(int opc2){
 
 }
 
+
+
+/*void Buscar(string palabra){
+
+	string fichero,s;
+	fstream ficheroEntrada;
+	bool encontrado=false;
+	cout<<"Diga el nombre del fichero:"<<endl;
+	getline(cin,fichero);
+
+	ficheroEntrada.open(fichero.c_str(), ios::in);
+	if(ficheroEntrada.is_open()){
+		while(getline(ficheroEntrada,s)){
+			if(s.find(palabra) != string::npos){
+				encontrado=true;
+				cout<<"palabra encontrada"<<endl;
+			}
+		}if(encontrado==false){
+				cout<<"palabra no encontrada"<<endl;
+			}
+		ficheroEntrada.close();
+	}else{
+		cout<<"Error de apertura del fichero"<<endl;
+	}
+
+}*/
+
+
+int Buscar(string palabra){//Añadir el caso de que se repitan apellidos
+
+	string fichero,s;
+	fstream ficheroEntrada;
+	bool encontrado=false;
+	cout<<"Diga el nombre del fichero:"<<endl;
+	getline(cin,fichero);
+
+	ficheroEntrada.open(fichero.c_str(), ios::in);
+	if(ficheroEntrada.is_open()){
+		while(getline(ficheroEntrada,s)){
+			if(s.find(palabra) != string::npos){
+				ficheroEntrada.close();
+				return 0;
+			}
+		}if(encontrado==false){
+			ficheroEntrada.close();
+			return 1;
+			}
+		
+	}else{
+		cout<<"Error al abrir el fichero, no existe"<<endl;
+		return 2;
+	}
+}
