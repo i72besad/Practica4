@@ -12,10 +12,12 @@ class Persona{
 
 private:
 
-	string DNI_,nombre_,apellidos_,direccion_,localidad_,provincia_,pais_;
+	string DNI_,nombre_,apellidos_,email_,direccion_,nacimiento_;
+	int telefono_,postal_,cursomax_,equipo_;
+	bool lider_;
 
 public:
-	Persona(string DNI, string nombre="",string apellidos="",string direccion ="",string localidad="",string provincia="",string pais=""){DNI_=DNI; nombre_=nombre; apellidos_=apellidos; direccion_=direccion; localidad_=localidad; provincia_=provincia; pais_=pais;};
+	Persona(string DNI, string nombre,string apellidos,int telefono,string email,string direccion,int postal,int cursomax,string nacimiento,bool lider=0,int equipo=0){DNI=DNI;nombre_=nombre;apellidos_=apellidos;telefono_=telefono;email_=email;direccion_=direccion;postal_=postal;cursomax_=cursomax;nacimiento_=nacimiento;lider_=lider;equipo_=equipo;};
 	
 	//set y get de la variable DNI
 	inline string getDNI() { return DNI_;};
@@ -34,25 +36,35 @@ public:
 	inline string getDireccion() { return direccion_;};
 	inline void setDireccion(string direccion){direccion_=direccion;};
 	
-	//set y get de la variable localidad
-	inline string getLocalidad() { return localidad_;};
-	inline void setLocalidad(string localidad){localidad_=localidad;};
+	//set y get de la variable telefono
+	inline int getTelefono(){ return telefono_;};
+	inline void setTelefono(int telefono){telefono_=telefono;};
 	
-	//set y get de la variable provincia
-	inline string getProvincia() { return provincia_;};
-	inline void setProvincia(string provincia){provincia_=provincia;};
+	//set y get de la variable email
+	inline string getEmail(){ return email_;};
+	inline void setEmail(string email){email_=email;};
+
+	//set y get de la variable postal
+	inline int getPostal(){ return postal_;};
+	inline void setPostal(int postal){postal_=postal;};
 	
-	//set y get de la variable pais
-	inline string getPais() { return pais_;};
-	inline void setPais(string pais){pais_=pais;};
+	//set y get de la variable cursomax
+	inline int getCursomax(){ return cursomax_;};
+	inline void setCursomax(int cursomax){cursomax_=cursomax;};
 	
-	//get de apellidos y nombre
-	inline string getApellidosyNombre() {
+	//set y get de la variable nacimiento
+	inline string getNacimiento(){ return nacimiento_;};
+	inline void setNacimiento(string nacimiento){nacimiento_=nacimiento;};
 	
-	string aux;
-	aux=apellidos_ +", "+ nombre_;
+	//set y get de la variable lider
+	inline bool getLider(){ return lider_;};
+	inline void setLider(bool lider){lider_=lider;};
 	
-	return aux;}	
+	//set y get de la variable equipo
+	inline int getEquipo(){ return equipo_;};
+	inline void setEquipo(int equipo){equipo_=equipo;};
+	
+
 	
 	
 	};
