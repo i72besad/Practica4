@@ -13,11 +13,11 @@ class Persona{
 private:
 
 	string DNI_,nombre_,apellidos_,email_,direccion_,nacimiento_;
-	int telefono_,postal_,cursomax_,equipo_;
-	bool lider_;
+	int telefono_,postal_;
 
 public:
-	Persona(string DNI, string nombre,string apellidos,int telefono,string email,string direccion,int postal,int cursomax,string nacimiento,bool lider=0,int equipo=0){DNI=DNI;nombre_=nombre;apellidos_=apellidos;telefono_=telefono;email_=email;direccion_=direccion;postal_=postal;cursomax_=cursomax;nacimiento_=nacimiento;lider_=lider;equipo_=equipo;};
+	Persona(string DNI, string nombre,string apellidos,int telefono,string email,string direccion,int postal,string nacimiento)
+	{DNI=DNI;nombre_=nombre;apellidos_=apellidos;telefono_=telefono;email_=email;direccion_=direccion;postal_=postal;nacimiento_=nacimiento;};
 	
 	//set y get de la variable DNI
 	inline string getDNI() { return DNI_;};
@@ -49,22 +49,22 @@ public:
 	inline void setPostal(int postal){postal_=postal;};
 	
 	//set y get de la variable cursomax
-	inline int getCursomax(){ return cursomax_;};
-	inline void setCursomax(int cursomax){cursomax_=cursomax;};
+	//inline int getCursomax(){ return cursomax_;};
+	//inline void setCursomax(int cursomax){cursomax_=cursomax;};
 	
 	//set y get de la variable nacimiento
 	inline string getNacimiento(){ return nacimiento_;};
 	inline void setNacimiento(string nacimiento){nacimiento_=nacimiento;};
 	
 	//set y get de la variable lider
-	inline bool getLider(){ return lider_;};
+	/*inline bool getLider(){ return lider_;};
 	inline void setLider(bool lider){lider_=lider;};
 	
 	//set y get de la variable equipo
 	inline int getEquipo(){ return equipo_;};
 	inline void setEquipo(int equipo){equipo_=equipo;};
 	
-
+*/
 	
 	
 	};
