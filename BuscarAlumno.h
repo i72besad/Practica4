@@ -4,7 +4,7 @@
 void BuscarAlumno();
 void BusquedaDNI();
 void BusquedaApellido();
-void Correcto(int opc2, string DNI);
+void Correcto(int opc2, string DNIApellido);
 void Incorrecto(int opc2);
 int Buscar(string palabra);
 
