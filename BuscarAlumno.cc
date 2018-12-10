@@ -138,6 +138,7 @@ void Incorrecto(int opc2){
 		break;
 		case '1':
 			BusquedaDNI();
+		break;
 	}
 
 
