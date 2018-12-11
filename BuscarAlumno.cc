@@ -12,6 +12,7 @@ void BuscarAlumno(){
 
 	cout<<"Opciones de Busqueda: 0-->DNI    1-->Apellido"<<endl;
 	cin>>opc;
+	cin.ignore();
 
 	if(opc==0){
 		BusquedaDNI();
@@ -39,7 +40,7 @@ void BusquedaDNI(){
 	string DNI;
 
 	cout<<"Introduzca el DNI:"<<endl;
-	cin>>DNI;
+	getline(cin,DNI,'\n');
 	//Averiguar como comprobar que el DNI esta bien escrito
 
 	tipo=Buscar(DNI);
@@ -47,12 +48,14 @@ void BusquedaDNI(){
 		cout<<"Alumno encontrado, ¿que desea hacer?"<<endl;
 		cout<<"\n\n\t0-->Mostrar\n\t1-->Modificar\n\t2-->Borrar"<<endl;
 		cin>>opc2;
+		cin.ignore();
 		if(opc2<0 || opc2>2){
 			while(opc2>2 || opc2<0){	
 				cout<<"Error, opción incorrecta"<<endl;
 				cout<<"Introduzca de nuevo una opción"<<endl;		
 				cout<<"\n\n\t0-->Mostrar\n\t1-->Modificar\n\t2-->Borrar"<<endl;				
 				cin>>opc2;
+				cin.ignore();
 			}
 		}
 		Correcto(opc2,DNI);
@@ -66,6 +69,7 @@ void BusquedaDNI(){
 				cout<<"Introduzca de nuevo una opción"<<endl;		
 				cout<<"\n\n\t0-->Insertar\n\t1-->Buscar de nuevo"<<endl;				
 				cin>>opc2;
+				cin.ignore();
 			}
 		}
 		Incorrecto(opc2);
@@ -79,7 +83,7 @@ void BusquedaApellido(){
 	string Apellido;
 
 	cout<<"Introduzca el Apellido:"<<endl;
-	cin>>Apellido;
+	getline(cin,Apellido,'\n');
 
 	tipo=Buscar(Apellido);
 
@@ -88,12 +92,14 @@ void BusquedaApellido(){
 		cout<<"Alumno encontrado, ¿que desea hacer?"<<endl;
 		cout<<"\n\n\t0-->Mostrar\n\t1-->Modificar\n\t2-->Borrar"<<endl;
 		cin>>opc2;
+		cin.ignore();
 		if(opc2<0 || opc2>2){
 			while(opc2>2 || opc2<0){	
 				cout<<"Error, opción incorrecta"<<endl;
 				cout<<"Introduzca de nuevo una opción"<<endl;		
 				cout<<"\n\n\t0-->Mostrar\n\t1-->Modificar\n\t2-->Borrar"<<endl;				
 				cin>>opc2;
+				cin.ignore();
 			}
 		}
 		Correcto(opc2,DNI);
@@ -107,6 +113,7 @@ void BusquedaApellido(){
 				cout<<"Introduzca de nuevo una opción"<<endl;		
 				cout<<"\n\n\t0-->Insertar\n\t1-->Buscar de nuevo"<<endl;				
 				cin>>opc2;
+				cin.ignore();
 			}
 		}
 		Incorrecto(opc2);
@@ -118,13 +125,13 @@ void BusquedaApellido(){
 
 void Correcto(int opc2,string DNI){
 	switch(opc2){
-		case '0':
+		case 0:
 			MostrarAlumno(DNI);
 			break;
-		case '1':
+		case 1:
 			ModificarAlumno(DNI);
 			break;
-		case '2':
+		case 2:
 			BorrarAlumno(DNI);
 			break;
 	}
@@ -133,10 +140,10 @@ void Correcto(int opc2,string DNI){
 void Incorrecto(int opc2){
 
 	switch(opc2){
-		case '0':
+		case 0:
 			InsertarAlumno();
 		break;
-		case '1':
+		case 1:
 			BusquedaDNI();
 		break;
 	}
