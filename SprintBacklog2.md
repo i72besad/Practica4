@@ -5,6 +5,7 @@ David Bermejo Sánchez, como Scrum Master, se encarga de:
 * Product Backlog 2
 * Gráfica de Burndown Chart
 * Mostrar Alumno
+* Main
 
 
 Elio Jesús Jiménez Luque se encarga de:
