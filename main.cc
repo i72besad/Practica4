@@ -7,11 +7,16 @@
 int main(){
 
 	int opc,save;
+	Agenda a;
 
-	mainmenu();
+	a.mainmenu();
+	
+
+	cout<<"\nBienvenido a su Agenda de alumnos personal, ¿qué desea hacer?"<<endl;
+	
 
 	while(opc!=8){
-		cout<<"\nBienvenido a su Agenda de alumnos personal, ¿qué desea hacer?"<<endl;
+
 		cout<<"\n\t0--> Buscar Alumno"<<endl;
 		cout<<"\t1--> Insertar Alumno"<<endl;
 		cout<<"\t2--> Borrar Alumno"<<endl;
