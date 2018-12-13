@@ -5,7 +5,7 @@
 using namespace std;
 
 
-void MostrarAlumno(string DNI){
+void MostrarAlumno(list <Alumno> listaalumno){
 
 	int opc;
 
@@ -30,20 +30,18 @@ void MostrarAlumno(string DNI){
 		}
 	}if(opc==1){
 
-
-		cout<<"\n\n\tDNI--> "<<a.getDNI()<<endl;
-		cout<<"\n\n\tNombre--> "<<a.getNombre()<<endl;
-		cout<<"\n\n\tApellidos--> "<<a.getApellidos()<<endl;
-		cout<<"\n\n\tTelefono--> "<<a.getTelefono()<<endl;
-		cout<<"\n\n\tDireccion--> "<<a.getDireccion()<<endl;
-		cout<<"\n\n\temail--> "<<a.getEmail()<<endl;
-		cout<<"\n\n\tCurso mas alto--> "<<a.getCursoMasAlto()<<endl;
-		cout<<"\n\n\tLider--> "<<a.getLider()<<endl;
-		cout<<"\n\n\tEquipo--> "<<a.getEquipo()<<endl;
+		for(list <alumno>::iterator it = listaalumno.begin(); it != listaalumno.end(); it++){
+			cout<<"\n\n\tDNI--> "<<it->getDNI()<<endl;
+			cout<<"\n\n\tNombre--> "<<it->getNombre()<<endl;
+			cout<<"\n\n\tApellidos--> "<<it->getApellidos()<<endl;
+			cout<<"\n\n\tTelefono--> "<<it->getTelefono()<<endl;
+			cout<<"\n\n\tDireccion--> "<<it->getDireccion()<<endl;
+			cout<<"\n\n\temail--> "<<it->getEmail()<<endl;
+			cout<<"\n\n\tCurso mas alto--> "<<it->getCursoMasAlto()<<endl;
+			cout<<"\n\n\tLider--> "<<it->getLider()<<endl;
+			cout<<"\n\n\tEquipo--> "<<it->getEquipo()<<endl;
+		}
 	}
-
-
-
 
 }
 
