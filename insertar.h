@@ -1,12 +1,11 @@
 //insertar.h
 
-#ifndef INSERTAR_H
-#define INSERTAR_H
+#include "alumno.h"
+#include "agenda.h"
 
-#include <string>
 #include <iostream>
-
-using namespace std;
+#include <string>
+#include <list>
 
 void insertar();
 
