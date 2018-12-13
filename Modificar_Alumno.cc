@@ -13,9 +13,9 @@ list <Alumno> ModificaAlumno(){
 
 	string auxs;
 	int auxi;
-	list <Alumno> listalumno = BuscarAlumnos();
+	list <Alumno> clase = BuscarAlumnos();
 
-	for(list <Alumno>::iterator it = listalumno.begin(); it != listalumno.end(); it++){
+	for(list <Alumno>::iterator i=clase.begin(); i!=clase.end(); it++){
 
 		int opcion;
 
@@ -104,5 +104,5 @@ list <Alumno> ModificaAlumno(){
 		}while (opcion > 0 );
 
 	}
-	return listalumno;
+	return clase;
 }
