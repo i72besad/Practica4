@@ -1,5 +1,12 @@
 #include <iostream>
 #include "Agenda.h"
+#include "BuscarAlumno.h"
+//#include "InsertarAlumno.h"
+//#include "BorrarAlumno.h"
+#include "ModificarAlumno.h"
+#include "MostrarAlumno.h"
+//#include "GestionarLideres.h"
+#include "Copia_Seguridad.h"
 
 
 
@@ -33,22 +40,22 @@ int main(){
 				BuscarAlumno();
 				break;
 			case 1:
-				InsertarAlumno();
+				//InsertarAlumno();
 				break;
 			case 2:
-				BorrarAlumno();
+				//BorrarAlumno();
 				break;
 			case 3:
-				ModificarAlumno();
+				ModificaAlumno();
 				break;
 			case 4:
 				MostrarAlumno();
 				break;
 			case 5:
-				MostrarTodos();
+				//MostrarTodos();
 				break;
 			case 6:
-				GestionarLideres();
+				//GestionarLideres();
 				break;
 			case 7:
 				GuardarCopia();
@@ -56,7 +63,7 @@ int main(){
 			case 8:
 				cout<<"¿Quiere guardar?"<<endl;
 				cout<<"0--> Sí   1-->No"<<endl;
-				cin-->save;
+				cin>>save;
 				cin.ignore();
 				if(save==0){
 					GuardarCopia();

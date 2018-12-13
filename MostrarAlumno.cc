@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <alumno.h>
+#include "alumno.h"
 
 using namespace std;
 

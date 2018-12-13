@@ -1,7 +1,7 @@
 //Función Modificar Alumno hecha por Jorge Jesús Chaparro Ibarra
 
 #include "alumno.h"
-#include "Buscar_Alumno.h"
+#include "BuscarAlumno.h"
 
 #include <iostream>
 #include <string>
@@ -15,7 +15,7 @@ list <Alumno> ModificaAlumno(){
 	int auxi;
 	list <Alumno> clase = BuscarAlumnos();
 
-	for(list <Alumno>::iterator i=clase.begin(); i!=clase.end(); it++){
+	for(list <Alumno>::iterator it=clase.begin(); it!=clase.end(); it++){
 
 		int opcion;
 
@@ -28,8 +28,8 @@ list <Alumno> ModificaAlumno(){
 			cout << "4. Teléfono:" << it->getTelefono() << "\n" <<endl;
 			cout << "5. Dirección:" << it->getDireccion() << "\n" << endl;
 			cout << "6. eMail:" << it->getEmail() << "\n" << endl;
-			cout << "7. Curso más Alto matriculado:" << it->getCurso() << "\n" << endl;
-			cout << "8. Número de equipo:" << it->getNequipo() << "\n" << endl;
+			cout << "7. Curso más Alto matriculado:" << it->getCursoMasAlto() << "\n" << endl;
+			cout << "8. Número de equipo:" << it->getEquipo() << "\n" << endl;
 			cout << "9. Líder de equipo: ";
 			if(it->getLider()==true){
 				cout << "Sí" << endl;
@@ -57,7 +57,7 @@ list <Alumno> ModificaAlumno(){
 				case '3':
 					cout << "Introduce los nuevos Apellidos: \n";
 					cin >> auxs;
-					(*it).setApellido(auxs);
+					(*it).setApellidos(auxs);
 					break;
 
 				case '4':
@@ -81,13 +81,13 @@ list <Alumno> ModificaAlumno(){
 				case '7':
 					cout << "Introduce el nuevo Curso más Alto: \n";
 					cin >> auxi;
-					(*it).setCurso(auxi);
+					(*it).setCursoMasAlto(auxi);
 					break;
 
 				case '8':
 					cout << "Introduce su nuevo equipo: \n";
 					cin >> auxi;
-					(*it).setNequipo(auxi);
+					(*it).setEquipo(auxi);
 					break;
 
 				case '9':

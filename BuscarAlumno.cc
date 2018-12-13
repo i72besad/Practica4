@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 #include "alumno.h"
-#include "funcionesAlumno.h"
+#include "persona.h"
+#include "BuscarAlumno.h"
 
 using namespace std;
 
