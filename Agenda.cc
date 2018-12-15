@@ -77,6 +77,7 @@ void Agenda::registerme(){
     getline(cin, usuario);
     cout << "\nUsuario -  \""<< usuario << "\"\n¿Estás seguro? \n\n[1] Sí\n[2] No" << endl;
     cin >> confirmation;
+    cin.ignore();
     if (confirmation == 1){
         registerpassword(usuario);
     }
@@ -93,8 +94,12 @@ void Agenda::registerpassword(string usuario){
 	string password, password2;
     cout << "Por favor, introduce la contraseña que deseas: " << endl;
     cin >> password;
+    cin.ignore();
+
     cout << "Por favor, vuelve a introducir la contraseña: " << endl;
     cin >> password2;
+    cin.ignore();
+
     if (password == password2){
         cin.clear();
         cin.ignore(10000,'\n');
@@ -124,44 +129,52 @@ void Agenda::insertar(){
 	
 	string dni,nombre,apellidos,direccion,nacimiento,email;
 	int telefono,postal,cursomax,equipo;
-	bool lider;
+	int lider;
 	
 	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
 	cout << "DNI:";
-	cin>>dni;
+	getline(cin,dni);
+
 	al.setDNI(dni);
 	
 	cout << "Nombre:";
-	cin>>nombre;
+	getline(cin,nombre);
+
 	al.setNombre(nombre);
 
 	
 	cout << "Apellidos:";
-	cin>>apellidos;
+	getline(cin,apellidos);
+
 	al.setApellidos(apellidos);
 
 	
 	cout << "Teléfono:";
 	cin>>telefono;
+	cin.ignore();
+
 	al.setTelefono(telefono);
 
 
 	cout << "Dirección:";
-	cin>>direccion;
+	getline(cin,direccion);
+
 	al.setDireccion(direccion);
 
 	cout << "Codigo Postal:";
 	cin>>postal;
+	cin.ignore();
+
 	al.setPostal(postal);
 
 	cout << "Fecha de nacimiento:";
-	cin>>nacimiento;
+	getline(cin,nacimiento);
+
 	al.setNacimiento(nacimiento);
 	
 	cout << "Email:";
-	cin>>email;
-	al.setEmail(email);
+	getline(cin,email);
 
 	cout << "Curso más Alto matriculado:";
 	cin>>cursomax;
@@ -171,10 +184,14 @@ void Agenda::insertar(){
 	cin>>equipo;
 	al.setEquipo(equipo);
 
-	cout << "Líder de equipo: ";	
+	cout << "Líder de equipo: 1-->Sí   0--->No";	
 	cin>>lider;
-	al.setLider(lider);
-
+	cin.ignore();
+	if(lider==1){
+		al.setLider(true);
+	}if(lider==0){
+		al.setLider(false);
+	}
 	
 	alumnos_.push_back(al);
 
@@ -212,6 +229,7 @@ void Agenda::ModificaAlumno(){
 
 			cout << "Introduce el número de la Opción: ";
 			cin >> opcion;
+			cin.ignore();
 
 			switch (opcion) {
 				case '1':
@@ -235,6 +253,7 @@ void Agenda::ModificaAlumno(){
 				case '4':
 					cout << "Introduce el nuevo Teléfono: \n";
 					cin >> auxi;
+					cin.ignore();
 					alumnos_[pos].setTelefono(auxi);
 					break;
 
@@ -253,12 +272,14 @@ void Agenda::ModificaAlumno(){
 				case '7':
 					cout << "Introduce el nuevo Curso más Alto: \n";
 					cin >> auxi;
+					cin.ignore();
 					alumnos_[pos].setCursoMasAlto(auxi);
 					break;
 
 				case '8':
 					cout << "Introduce su nuevo equipo: \n";
 					cin >> auxi;
+					cin.ignore()
 					alumnos_[pos].setEquipo(auxi);
 					break;
 
@@ -330,6 +351,8 @@ void Agenda::gestionarLideres()
 
 	cout<<"Equipo: "<<endl;
 	cin>>equipo;
+	cin.ignore();
+
 
 
 
@@ -384,6 +407,8 @@ void Agenda::gestionarLideres()
 
 	std::cout<< "Cual deseas poner como lider: (escoja el numero del alumno) ";
 	std::cin>>num;
+	cin.ignore();
+
 
 	if(pos1 == -1 and pos2 == -1 and pos3 == -1)
 	{

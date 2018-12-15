@@ -129,6 +129,8 @@ void Mostrar(Agenda ag){
 	cout << "..:Menú de Mostrar Alumnos:..\n" << endl;
 	cout << "Elige la opción deseada: \n 0.- Mostrar un Alumno.\n 1.- Mostrar todos los alumnos.\n" << endl;
 	cin >>opc;
+	cin.ignore();
+
 	
 
 	if(opc==0){
@@ -161,6 +163,8 @@ void gestionarLiderAlumno(Agenda ag)
 
 	cout<<"Introduce el numero del equipo:"<<endl;
 	cin>>equipo;
+	cin.ignore();
+
 
 
 	ag.gestionarLideres();
