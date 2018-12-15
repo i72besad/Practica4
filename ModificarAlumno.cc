@@ -1,4 +1,4 @@
-//Función Modificar Alumno hecha por Jorge Jesús Chaparro Ibarra
+
 
 #include "alumno.h"
 #include "BuscarAlumno.h"

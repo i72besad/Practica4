@@ -93,3 +93,25 @@ int menu()
 	return opcion;
 }
 
+
+
+int buscar(){
+
+	int opc,aux;
+
+	cout<<"¿Buscar por apellido o por DNI?"<<endl;
+	cout <<"1-->DNI   0--->Apellido"<<endl;
+	cin>>opc;
+	cin.ignore();
+	while(opc>1 || opc<0){
+		cout<<"Mal escrito, escoja la opción correcta"<<endl;
+		cout <<"1-->DNI   0--->Apellido"<<endl;
+	}
+	if(opc==1){
+		aux=buscarDNI();
+		return aux;
+	}if(opc==0){
+		aux=buscarApellido();
+		return aux;
+	}
+}
