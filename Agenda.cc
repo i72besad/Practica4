@@ -1,3 +1,4 @@
+//ClaseAgenda.cc realizada por Jorge Jesús Chaparro Ibarra
 //Métodos de la clase Agenda
 
 #include <iostream>
@@ -112,4 +113,334 @@ void Agenda::writetofile(string usuario, string password){
     writefile.open(file.c_str());
     writefile << password;
     writefile.close();
+}
+
+
+void insertar(){
+	
+	Alumno al;
+	
+
+	cout << "DNI:";
+	cin>>dni;
+	al.setDNI(dni);
+	
+	cout << "Nombre:";
+	cin>>nombre;
+	al.setNombre(nombre);
+
+	
+	cout << "Apellidos:";
+	cin>>apellidos;
+	al.setApellidos(apellidos);
+
+	
+	cout << "Teléfono:";
+	cin>>telefono;
+	al.setTelefono(telefono);
+
+
+	cout << "Dirección:";
+	cin>>direccion;
+	al.setDireccion(direccion);
+
+	cout << "Codigo Postal:";
+	cin>>postal;
+	al.setPostal(postal);
+
+	cout << "Fecha de nacimiento:";
+	cin>>nacimiento;
+	al.setNacimiento(nacimiento);
+	
+	cout << "Email:";
+	cin>>email;
+	al.setEmail(email);
+
+	cout << "Curso más Alto matriculado:";
+	cin>>cursomax;
+	al.setCursoMasAlto(cursomax);
+
+	cout << "Número de equipo:";
+	cin>>equipo;
+	al.setEquipo(equipo);
+
+	cout << "Líder de equipo: ";	
+	cin>>lider;
+	al.setlider(lider);
+
+	
+
+	alumnos_.push_back(al);
+
+
+
+	
+}
+
+void ModificaAlumno(){
+
+	string auxs;
+	int auxi;
+	int pos = BuscarAlumnos();
+
+		int opcion;
+
+		do {
+			cout << "Elige el atributo del Alumno que desea modificar: \n" << endl;
+			
+			cout << "1. DNI:" << alumnos_[pos].getDNI() << "\n" << endl;
+			cout << "2. Nombre:" << alumnos_[pos].getNombre() << "\n" << endl;
+			cout << "3. Apellidos:" << alumnos_[pos].getApellidos() << "\n" << endl;
+			cout << "4. Teléfono:" << alumnos_[pos].getTelefono() << "\n" <<endl;
+			cout << "5. Dirección:" << alumnos_[pos].getDireccion() << "\n" << endl;
+			cout << "6. eMail:" << alumnos_[pos].getEmail() << "\n" << endl;
+			cout << "7. Curso más Alto matriculado:" << alumnos_[pos].getCurso() << "\n" << endl;
+			cout << "8. Número de equipo:" << alumnos_[pos].getNequipo() << "\n" << endl;
+			cout << "9. Líder de equipo: ";
+			if(alumnos_[pos].getLider()==true){
+				cout << "Sí" << endl;
+			}else{
+				cout << "No" << endl;
+			}
+			cout << "0. Guardar alumno y salir." << "\n" << endl;
+
+			cout << "Introduce el número de la Opción: ";
+			cin >> opcion;
+
+			switch (opcion) {
+				case '1':
+					cout << "Introduce el nuevo DNI:  \n";
+					getline(cin, auxs);
+					alumnos_[pos].setDNI(auxs);
+					break;
+
+				case '2':
+					cout << "Introduce el nuevo Nombre:  \n";
+					getline(cin, auxs);
+					alumnos_[pos].setNombre(auxs);
+					break;
+
+				case '3':
+					cout << "Introduce los nuevos Apellidos: \n";
+					getline(cin, auxs)
+					alumnos_[pos].setApellido(auxs);
+					break;
+
+				case '4':
+					cout << "Introduce el nuevo Teléfono: \n";
+					cin >> auxi;
+					alumnos_[pos].setTelefono(auxi);
+					break;
+
+				case '5':
+					cout << "Introduce la nueva Dirección: \n";
+					getline(cin, auxs);
+					alumnos_[pos].setDireccion(auxs);
+					break;
+
+				case '6':
+					cout << "Introduce el nuevo eMail: \n";
+					getline(cin, auxs);
+					alumnos_[pos].setEmail(auxs);
+					break;
+
+				case '7':
+					cout << "Introduce el nuevo Curso más Alto: \n";
+					cin >> auxi;
+					alumnos_[pos].setCurso(auxi);
+					break;
+
+				case '8':
+					cout << "Introduce su nuevo equipo: \n";
+					cin >> auxi;
+					alumnos_[pos].setNequipo(auxi);
+					break;
+
+				case '9':
+					alumnos_[pos].cambiaLider();
+					break;
+
+				case '0':
+					cout << "El Alumno ha sido modificado correctamente.\n";
+					break;
+
+				default: 
+					cout << opcion << "La opción introducida no está dentro del Menú.\n" << endl;
+			}
+		}while (opcion > 0 );
+}
+
+
+
+void MostrarAlumno(int pos){
+
+
+	cout<<"\n\n\tDNI--> "<<alumnos_[pos].getDNI()<<endl;
+	cout<<"\n\tNombre--> "<<alumnos_[pos].getNombre()<<endl;
+	cout<<"\n\tApellidos--> "<<alumnos_[pos].getApellidos()<<endl;
+	cout<<"\n\tTelefono--> "<<alumnos_[pos].getTelefono()<<endl;
+	cout<<"\n\tDireccion--> "<<alumnos_[pos].getDireccion()<<endl;
+	cout<<"\n\temail--> "<<alumnos_[pos].getEmail()<<endl;
+	cout<<"\n\tCurso mas alto--> "<<alumnos_[pos].getCursoMasAlto()<<endl;
+	cout<<"\n\tLider--> "<<alumnos_[pos].getLider()<<endl;
+	cout<<"\n\tEquipo--> "<<alumnos_[pos].getEquipo()<<endl;
+
+
+
+}
+
+
+void MostrarTodos(){
+
+	int tam=tamVect();
+
+	for(int i=0;i<tam,i++){
+		cout<<"\n\nAlumno "<<i+1<<endl;
+		cout<<"\n\tDNI--> "<<alumnos_[i].getDNI()<<endl;
+		cout<<"\n\tNombre--> "<<alumnos_[i].getNombre()<<endl;
+		cout<<"\n\tApellidos--> "<<alumnos_[i].getApellidos()<<endl;
+		cout<<"\n\tTelefono--> "<<alumnos_[i].getTelefono()<<endl;
+		cout<<"\n\tDireccion--> "<<alumnos_[i].getDireccion()<<endl;
+		cout<<"\n\temail--> "<<alumnos_[i].getEmail()<<endl;
+		cout<<"\n\tCurso mas alto--> "<<alumnos_[i].getCursoMasAlto()<<endl;
+		cout<<"\n\tLider--> "<<alumnos_[i].getLider()<<endl;
+		cout<<"\n\tEquipo--> "<<alumnos_[i].getEquipo()<<endl;
+	}
+}
+
+
+void gestionarLideres(int equipo)
+{
+	int tam = tamVect(), i, pos1=-1, pos2=-1, pos3=-1;
+	int lider=-1,num;
+
+
+	for(i=0;i<tam;i++){
+
+		if(alumnos_[i].getEquipo() == equipo)
+		{
+
+			if(pos1 == -1)
+				pos1 = i;
+			else if(pos2 == -1)
+				pos2 = i;
+			else if(pos3 == -1)
+				pos3 = i;
+
+		}
+	
+	std::cout<<"Los miembros son: " << endl;
+
+	if(pos1 != -1)
+	{
+		std::cout<< pos1 << alumnos_[pos1].getNombre() << alumnos_[pos1].getApellidos();
+
+		if(alumnos_[pos1].getLider() == TRUE)
+		{
+		lider = pos1;
+		std::cout<< "Este alumno es el lider"<< endl;
+		}	
+		
+	}
+	if(pos2 != -1)
+	{
+		std::cout<< pos2 << alumnos_[pos2].getNombre() << alumnos_[pos2].getApellidos();
+		if(alumnos_[pos2].getLider() == TRUE)
+		{
+		lider = pos2;
+		std::cout<< "Este alumno es el lider"<< endl;
+		}
+	}
+	if(pos3 != -1)
+	{
+		std::cout<< pos3 << alumnos_[pos3].getNombre() << alumnos_[pos3].getApellidos();
+		if(alumnos_[pos3].getLider() == TRUE)
+		{
+		lider = pos3;
+		std::cout<< "Este alumno es el lider"<< endl;
+		}
+	}
+
+	if(pos1 == -1 and pos2 == -1 and pos3 == -1)
+			std::cout<< "No hay un lider "<< endl;
+
+	std::cout<< "Cual deseas poner como lider: (escoja el numero del alumno) "
+	std::cin>>num;
+
+	if(pos1 == -1 and pos2 == -1 and pos3 == -1)
+	{
+
+		alumnos_[num].setLider(TRUE);
+
+	}
+	else
+	{
+	
+		alumnos_[lider].setLider(FALSE);
+		alumnos_[num].setLider(TRUE);
+
+	}
+
+	}
+
+
+
+
+}
+
+
+
+int buscarDNI() // devuelve la posicion donde esta el alumno, buscando por dni
+{
+	int opc;
+	string DNI;
+	cout<<"Introduzca el DNI:"<<endl;
+	getline(cin,DNI,'\n');
+
+	int tam = tamVect(),i;
+	
+	for(i=0;i<tam;i++){
+
+		if(alumnos_[i].getDNI() == DNI){
+			return i;
+		}
+
+	}
+	cout<<"Error, el alumno no existe, ¿desea insertar un nuevo alumno?"<<endl;
+	cout<<"\nSí-->1   No-->0"<<endl;
+	cin>>opc;
+	while(opc>1 || opc<0){
+		cout<<"Mal escrito, repita su opción:"<<endl;
+		cout<<"\nSí-->1   No-->0"<<endl;
+	}if(opc==1){
+		InsertarAlumno();
+		return -1;
+	}if(opc==0){
+		return -1;
+	}
+}
+
+int buscarApellido(){
+	string Apellido;
+	cout<<"Introduzca el Apellido:"<<endl;
+	getline(cin,Apellido,'\n');
+
+	int tam=tamVect(),i,cont=0;
+
+	for(i=0;i<tam;i++){
+		if(alumnos_[i].getApellidos()==Apellidos){
+			cont++;
+			auxi=i;
+		}
+	}
+	if(cont==1){
+		cout<<"Alumno encontrado"<<endl;
+		return auxi;
+	}else{
+		cout<<"Error, más de un alumno con el mismo apellido, redirigiendo a buscar por DNI..."<<endl;
+		auxi=buscarDNI();
+		return auxi;
+	}
+
+
 }
