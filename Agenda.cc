@@ -444,3 +444,16 @@ int buscarApellido(){
 
 
 }
+
+
+
+void eliminarAlumno(string dni)
+{
+
+	int pos = buscarDni(dni);
+
+
+	alumnos_.erase(pos);
+
+
+}
