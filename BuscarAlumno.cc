@@ -10,7 +10,7 @@ using namespace std;
 
 int buscarDNI() // devuelve la posicion donde esta el alumno, buscando por dni
 {
-
+	int opc;
 	string DNI;
 	cout<<"Introduzca el DNI:"<<endl;
 	getline(cin,DNI,'\n');
@@ -24,7 +24,18 @@ int buscarDNI() // devuelve la posicion donde esta el alumno, buscando por dni
 		}
 
 	}
-
+	cout<<"Error, el alumno no existe, ¿desea insertar un nuevo alumno?"<<endl;
+	cout<<"\nSí-->1   No-->0"<<endl;
+	cin>>opc;
+	while(opc>1 || opc<0){
+		cout<<"Mal escrito, repita su opción:"<<endl;
+		cout<<"\nSí-->1   No-->0"<<endl;
+	}if(opc==1){
+		InsertarAlumno();
+		return -1;
+	}if(opc==0){
+		return -1;
+	}
 }
 
 int buscarApellido(){

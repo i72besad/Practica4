@@ -48,17 +48,19 @@ int main(){
 			//////////////////////////////////////////////////////////////////////////////
 			case 2: 
 					std::cout << "[2] Guardar copia de seguridad" << std::endl;
+					GuardarCopia();
 
 				break;
 
 			case 3: 
 					std::cout << "[3] Cargar copia de seguridad" << std::endl;
+					CargarCopia();
 
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 4: 
-				  	std::cout << "[4] Mostrar Alumnos: " << std::endl; 
+				  	std::cout << "[4] Mostrar Alumno: " << std::endl; 
 
 					break;
 
