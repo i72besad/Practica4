@@ -161,3 +161,18 @@ void gestionarLiderAlumno()
 
 
 }
+
+
+void eliminar()
+{
+	
+	string dni;
+	cout<<"DNI del alumno a borrar	: " << endl;
+	getline(cin,dni);
+	
+	eliminarAlumno(dni);
+
+
+
+
+}
