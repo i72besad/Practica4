@@ -115,3 +115,22 @@ int buscar(){
 		return aux;
 	}
 }
+
+void Modificar(){
+	cout << "Cargando el Menú de Modificación...\n" << endl;
+	ModificaAlumno();
+}
+
+void Mostar(){
+	int opc;
+	cout << "..:Menú de Mostrar Alumnos:..\n" << endl;
+	cout << "Elige la opción deseada: \n 0.- Mostrar un Alumno.\n 1.- Mostrar todos los alumnos.\n" << endl;
+	if(opc==0){
+		MostrarAlumno();
+	}else if(opc==1){
+		MostrarTodos();
+	}else{
+		cout << "..:ERROR:..\n La opción no está disponible." << endl;
+		exit(-1);
+	}
+}
