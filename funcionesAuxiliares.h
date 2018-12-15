@@ -5,4 +5,13 @@
 
 int menu();
 int buscar();
+void Mostrar();
+void gestionarLiderAlumno();
+void insertarAlumno();
+
+
 #endif
+
+
+
+
