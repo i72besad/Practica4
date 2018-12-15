@@ -3,8 +3,12 @@
 
 #include <iostream>
 #include "alumno.h"
+#include "Agenda.h"
+#include "persona.h"
+#include "funcionesAuxiliares.h"
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -13,27 +17,33 @@ using std::ofstream;
 
 void GuardarCopia(){
 	string aux, fichero;
-	ifstream archivo_entrada;
+	ofstream archivo_salida;
+	int tam = tamVect();
+
 	cout << "Escribe el nombre del fichero: " << endl;
 	getline(cin, fichero);
-	int fd=open(fichero, 0_RDONLY);
-	if(fd<0){
-		cout << "Error, el fichero no existe.\n" << endl;
-		exit(-1);
-	}else{
-		archivo_entrada.open(fichero.c_str(), ios::in);
+
+	archivo_salida.open(fichero.c_str(), ios::out);
+
+	for(int i=0; i<tam; i++){
+		archivo_salida << alumnos_[i];
 	}
 
-	ofstream archivo_salida;
-	archivo_salida.open("Copia_Seguridad.bin", ios::out | ios::binary);
+	archivo_salida.close();
+
+	ifstream archivo_entrada;
+	archivo_entrada.open(fichero.c_str(), ios::in);
+
+	ofstream archivo_salida1;
+	archivo_salida1.open("Copia_Seguridad.bin", ios::out | ios::binary);
 
 	while(!archivo_entrada.eof()){
 		getline(archivo_entrada, aux);
 		aux += "\n";
-		archivo_salida.write(aux.c_str(), aux.size());
+		archivo_salida1.write(aux.c_str(), aux.size());
 	}
 	archivo_entrada.close();
-	archivo_salida.close();
+	archivo_salida1.close();
 }
 
 void CargarCopia(){
