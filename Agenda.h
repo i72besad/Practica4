@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include <string>
-#include <list>
+#include <vector>
 
 
 #include "alumno.h"
@@ -14,7 +14,7 @@ using namespace std;
 
 class Agenda {
 private:
-	list <Alumno> alumnos_;
+	vector <Alumno> alumnos_;
 	string usuario_;
 	string password_;
 public:
@@ -33,6 +33,8 @@ public:
 	void registerme();
 	void registerpassword(string usuario);
 	void writetofile(string usuario, string password);
+	inline int tamVect(){return alumnos_.size()};
+
 };
 
 #endif
