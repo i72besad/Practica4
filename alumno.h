@@ -17,12 +17,13 @@ private:
 	int Equipo_;
 
 public:
+
 	Alumno(string DNI, string nombre, string apellidos, int telefono,
 	string email, string direccion, int postal, string nacimiento, int CursoMasAlto,int Equipo, bool lider): Persona(DNI, nombre,apellidos,
 	telefono,email,direccion,postal, nacimiento)
 	{lider_=lider; CursoMasAlto_=CursoMasAlto; Equipo_=Equipo;};
 
-	inline void setlider(bool lider){lider_=lider;};
+	inline void setLider(bool lider){lider_=lider;};
 	inline bool getLider(){return lider_;};
 
 	inline void setCursoMasAlto(int CursoMasAlto){CursoMasAlto_=CursoMasAlto;};

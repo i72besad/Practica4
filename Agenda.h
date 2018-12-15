@@ -40,10 +40,11 @@ public:
 	void ModificaAlumno();
 	void MostrarAlumno(int pos);
 	void MostrarTodos();
-	void gestionarLideres(int equipo);
+	void gestionarLideres();
 	int buscarDNI();
 	int buscarApellido();
-
+	inline int tamVect(){return alumnos_.size();};
+	void eliminarAlumno();
 
 };
 

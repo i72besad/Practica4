@@ -3,8 +3,9 @@
 #include <iostream>
 #include "Agenda.h"
 #include <string>
+#include "alumno.h"
 
-
+#include <vector>
 
 #include "funcionesAuxiliares.h"
 #include "macros.hpp"
@@ -18,7 +19,7 @@ using namespace std;
 */
 int main(){
 
-
+	Agenda ag;
 	int opcion;
 
 	do{
@@ -41,7 +42,7 @@ int main(){
 
 			case 1: 
 					std::cout << "[1] Buscar Alumno" << std::endl;
-					buscar();
+					buscar(ag);
 
 					break;
 
@@ -61,13 +62,13 @@ int main(){
 			//////////////////////////////////////////////////////////////////////////////
 			case 4: 
 				  	std::cout << "[4] Mostrar Alumno: " << std::endl;
-				  	Mostrar(); 
+				  	Mostrar(ag); 
 
 					break;
 
 			case 5: 
 				  	std::cout << "[5] Modificar datos del Alumno: " << std::endl; 
-				  	Modificar();
+				  	Modificar(ag);
 
 					break;
 
@@ -75,26 +76,26 @@ int main(){
 			//////////////////////////////////////////////////////////////////////////////
 			case 6: 
 					std::cout << "[6] Insertar Alumno:" << std::endl;
-					insertarAlumno();
+					insertarAlumno(ag);
 
 					break;
 
 
 			case 7: 
 					std::cout << "[7] Borrar Alumno: " << std::endl;
-
+					eliminar(ag);
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 8: 
 					std::cout << "[8] Gestionar líderes: " << std::endl;
-					gestionarLiderAlumno();
+					gestionarLiderAlumno(ag);
 
 					break;
 
 			case 9: 
 					std::cout << "[9] Mostrar Todos " << std::endl;
-					Mostrar();
+					Mostrar(ag);
 
 					break;
 

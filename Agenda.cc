@@ -5,6 +5,8 @@
 #include <string>
 #include <fstream>
 #include "alumno.h"
+#include <stdlib.h>
+#include <vector>
 
 #include "Agenda.h"
 
@@ -118,7 +120,7 @@ void Agenda::writetofile(string usuario, string password){
 
 
 void Agenda::insertar(){
-	
+	/*
 	Alumno al;
 	string dni,nombre,apellidos,direccion,nacimiento,email;
 	int telefono,postal,cursomax,equipo;
@@ -170,14 +172,14 @@ void Agenda::insertar(){
 
 	cout << "Líder de equipo: ";	
 	cin>>lider;
-	al.setlider(lider);
+	al.setLider(lider);
 
 	
 
 	alumnos_.push_back(al);
 
 
-
+*/
 	
 }
 
@@ -185,7 +187,7 @@ void Agenda::ModificaAlumno(){
 
 	string auxs;
 	int auxi;
-	int pos = BuscarAlumnos();
+	int pos = buscarDNI();
 
 		int opcion;
 
@@ -198,8 +200,8 @@ void Agenda::ModificaAlumno(){
 			cout << "4. Teléfono:" << alumnos_[pos].getTelefono() << "\n" <<endl;
 			cout << "5. Dirección:" << alumnos_[pos].getDireccion() << "\n" << endl;
 			cout << "6. eMail:" << alumnos_[pos].getEmail() << "\n" << endl;
-			cout << "7. Curso más Alto matriculado:" << alumnos_[pos].getCurso() << "\n" << endl;
-			cout << "8. Número de equipo:" << alumnos_[pos].getNequipo() << "\n" << endl;
+			cout << "7. Curso más Alto matriculado:" << alumnos_[pos].getCursoMasAlto() << "\n" << endl;
+			cout << "8. Número de equipo:" << alumnos_[pos].getEquipo() << "\n" << endl;
 			cout << "9. Líder de equipo: ";
 			if(alumnos_[pos].getLider()==true){
 				cout << "Sí" << endl;
@@ -226,8 +228,8 @@ void Agenda::ModificaAlumno(){
 
 				case '3':
 					cout << "Introduce los nuevos Apellidos: \n";
-					getline(cin, auxs)
-					alumnos_[pos].setApellido(auxs);
+					getline(cin, auxs);
+					alumnos_[pos].setApellidos(auxs);
 					break;
 
 				case '4':
@@ -251,17 +253,22 @@ void Agenda::ModificaAlumno(){
 				case '7':
 					cout << "Introduce el nuevo Curso más Alto: \n";
 					cin >> auxi;
-					alumnos_[pos].setCurso(auxi);
+					alumnos_[pos].setCursoMasAlto(auxi);
 					break;
 
 				case '8':
 					cout << "Introduce su nuevo equipo: \n";
 					cin >> auxi;
-					alumnos_[pos].setNequipo(auxi);
+					alumnos_[pos].setEquipo(auxi);
 					break;
 
 				case '9':
-					alumnos_[pos].cambiaLider();
+					cout << "Introduce lider: \n";
+					cin >> auxi;
+					if(auxi == 1)
+						alumnos_[pos].setLider(true);
+					else
+						alumnos_[pos].setLider(false);
 					break;
 
 				case '0':
@@ -296,9 +303,10 @@ void Agenda::MostrarAlumno(int pos){
 
 void Agenda::MostrarTodos(){
 
-	int tam=tamVect();
+	int tam;
+	tam = tamVect();
 
-	for(int i=0;i<tam,i++){
+	for(int i=0;i<tam;i++){
 		cout<<"\n\nAlumno "<<i+1<<endl;
 		cout<<"\n\tDNI--> "<<alumnos_[i].getDNI()<<endl;
 		cout<<"\n\tNombre--> "<<alumnos_[i].getNombre()<<endl;
@@ -313,10 +321,16 @@ void Agenda::MostrarTodos(){
 }
 
 
-void Agenda::gestionarLideres(int equipo)
+void Agenda::gestionarLideres()
 {
 	int tam = tamVect(), i, pos1=-1, pos2=-1, pos3=-1;
 	int lider=-1,num;
+	int equipo;
+
+
+	cout<<"Equipo: "<<endl;
+	cin>>equipo;
+
 
 
 	for(i=0;i<tam;i++){
@@ -368,7 +382,7 @@ void Agenda::gestionarLideres(int equipo)
 	if(pos1 == -1 and pos2 == -1 and pos3 == -1)
 			std::cout<< "No hay un lider "<< endl;
 
-	std::cout<< "Cual deseas poner como lider: (escoja el numero del alumno) "
+	std::cout<< "Cual deseas poner como lider: (escoja el numero del alumno) ";
 	std::cin>>num;
 
 	if(pos1 == -1 and pos2 == -1 and pos3 == -1)
@@ -417,7 +431,7 @@ int Agenda::buscarDNI() // devuelve la posicion donde esta el alumno, buscando p
 		cout<<"Mal escrito, repita su opción:"<<endl;
 		cout<<"\nSí-->1   No-->0"<<endl;
 	}if(opc==1){
-		InsertarAlumno();
+		insertar();
 		return -1;
 	}if(opc==0){
 		return -1;
@@ -427,13 +441,15 @@ int Agenda::buscarDNI() // devuelve la posicion donde esta el alumno, buscando p
 int Agenda::buscarApellido(){
 	string Apellido;
 	int auxi;
+	int cont = 0;
+
 	cout<<"Introduzca el Apellido:"<<endl;
 	getline(cin,Apellido,'\n');
 
-	int tam=tamVect(),i,cont=0;
+	int tam=tamVect();
 
 	for(int i=0;i<tam;i++){
-		if(alumnos_[i].getApellidos()==Apellidos){
+		if(alumnos_[i].getApellidos()==Apellido){
 			cont++;
 			auxi=i;
 		}
@@ -452,13 +468,13 @@ int Agenda::buscarApellido(){
 
 
 
-void Agenda::eliminarAlumno(string dni)
+void Agenda::eliminarAlumno()
 {
 
-	int pos = buscarDni(dni);
+	int pos = buscarDNI();
 
 
-	alumnos_.erase(pos);
+	//alumnos_.erase(pos);
 
 	cout<<"Alumno eliminado"<<endl;
 

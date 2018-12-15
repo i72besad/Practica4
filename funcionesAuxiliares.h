@@ -4,12 +4,12 @@
 #include <iostream>
 
 int menu();
-int buscar();
-void Mostrar();
-void gestionarLiderAlumno();
-void insertarAlumno();
-void eliminar();
-void Modificar();
+int buscar(Agenda ag);
+void Mostrar(Agenda ag);
+void gestionarLiderAlumno(Agenda ag);
+void insertarAlumno(Agenda ag);
+void eliminar(Agenda ag);
+void Modificar(Agenda ag);
 
 #endif
 

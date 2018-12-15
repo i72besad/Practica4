@@ -9,6 +9,7 @@
 #include "Agenda.h"
 #include "funcionesAuxiliares.h"
 
+#include <vector>
 
 #include "macros.hpp"
 
@@ -97,7 +98,7 @@ int menu()
 
 
 
-int buscar(){
+int buscar(Agenda ag){
 
 	int opc,aux;
 
@@ -110,27 +111,31 @@ int buscar(){
 		cout <<"1-->DNI   0--->Apellido"<<endl;
 	}
 	if(opc==1){
-		aux=buscarDNI();
+		aux=ag.buscarDNI();
 		return aux;
 	}if(opc==0){
-		aux=buscarApellido();
+		aux=ag.buscarApellido();
 		return aux;
 	}
 }
 
-void Modificar(){
+void Modificar(Agenda ag){
 	cout << "Cargando el Menú de Modificación...\n" << endl;
-	ModificaAlumno();
+	ag.ModificaAlumno();
 }
 
-void Mostrar(){
+void Mostrar(Agenda ag){
 	int opc;
 	cout << "..:Menú de Mostrar Alumnos:..\n" << endl;
 	cout << "Elige la opción deseada: \n 0.- Mostrar un Alumno.\n 1.- Mostrar todos los alumnos.\n" << endl;
+	cin >>opc;
+	int pos = buscar(ag);
+
 	if(opc==0){
-		MostrarAlumno();
+		
+		ag.MostrarAlumno(pos);
 	}else if(opc==1){
-		MostrarTodos();
+		ag.MostrarTodos();
 	}else{
 		cout << "..:ERROR:..\n La opción no está disponible." << endl;
 		exit(-1);
@@ -138,15 +143,15 @@ void Mostrar(){
 }
 
 
-void insertarAlumno()
+void insertarAlumno(Agenda ag)
 {
 
-	insertar();
+	ag.insertar();
 
 
 }
 
-void gestionarLiderAlumno()
+void gestionarLiderAlumno(Agenda ag)
 {
 
 	int equipo;
@@ -156,21 +161,18 @@ void gestionarLiderAlumno()
 	cin>>equipo;
 
 
-	gestionarLideres(equipo);
+	ag.gestionarLideres();
 
 
 
 }
 
 
-void eliminar()
+void eliminar(Agenda ag)
 {
 	
-	string dni;
-	cout<<"DNI del alumno a borrar	: " << endl;
-	getline(cin,dni);
 	
-	eliminarAlumno(dni);
+	ag.eliminarAlumno();
 
 
 
