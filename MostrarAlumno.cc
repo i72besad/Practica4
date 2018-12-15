@@ -1,52 +1,41 @@
 #include <iostream>
-#include <string>
-#include "alumno.h"
+#include "MostrarAlumno.h"
+#include "Alumno.h"
+#include <vector>
 
-using namespace std;
+
+void MostrarAlumno(int pos){
 
 
-void MostrarAlumno(list <Alumno> listaalumno){
+	cout<<"\n\n\tDNI--> "<<alumnos_[pos].getDNI()<<endl;
+	cout<<"\n\tNombre--> "<<alumnos_[pos].getNombre()<<endl;
+	cout<<"\n\tApellidos--> "<<alumnos_[pos].getApellidos()<<endl;
+	cout<<"\n\tTelefono--> "<<alumnos_[pos].getTelefono()<<endl;
+	cout<<"\n\tDireccion--> "<<alumnos_[pos].getDireccion()<<endl;
+	cout<<"\n\temail--> "<<alumnos_[pos].getEmail()<<endl;
+	cout<<"\n\tCurso mas alto--> "<<alumnos_[pos].getCursoMasAlto()<<endl;
+	cout<<"\n\tLider--> "<<alumnos_[pos].getLider()<<endl;
+	cout<<"\n\tEquipo--> "<<alumnos_[pos].getEquipo()<<endl;
 
-	int opc;
 
-	alumno a;
-
-	cout<<"¿Qué desea ver?"<<endl;
-	cout<<"\n\t0-->Mostrar Todos los Alumnos  1-->El Alumno"<<endl;
-	cin>>opc;
-	cin.ignore();
-	if(opc==0){
-		MostrarTodos();
-	}if(opc>1 || opc<0){
-		while(opc>1 || opc<0){
-			cout<<"Error, opción incorrecta"<<endl;
-			cout<<"Introduzca de nuevo una opción:\n"<<endl;		
-			cout<<"¿Qué desea ver?"<<endl;
-			cout<<"\n\t0-->Mostrar Todos los Alumnos   1-->El Alumno"<<endl;				
-			cin>>opc2;
-			if(opc==0){
-				MostrarTodos();
-			}
-		}
-	}if(opc==1){
-
-		for(list <alumno>::iterator it = listaalumno.begin(); it != listaalumno.end(); it++){
-			cout<<"\n\n\tDNI--> "<<it->getDNI()<<endl;
-			cout<<"\n\n\tNombre--> "<<it->getNombre()<<endl;
-			cout<<"\n\n\tApellidos--> "<<it->getApellidos()<<endl;
-			cout<<"\n\n\tTelefono--> "<<it->getTelefono()<<endl;
-			cout<<"\n\n\tDireccion--> "<<it->getDireccion()<<endl;
-			cout<<"\n\n\temail--> "<<it->getEmail()<<endl;
-			cout<<"\n\n\tCurso mas alto--> "<<it->getCursoMasAlto()<<endl;
-			cout<<"\n\n\tLider--> "<<it->getLider()<<endl;
-			cout<<"\n\n\tEquipo--> "<<it->getEquipo()<<endl;
-		}
-	}
 
 }
 
 
-
 void MostrarTodos(){
 
+	int tam=tamVect();
+
+	for(int i=0;i<tam,i++){
+		cout<<"\n\nAlumno "<<i+1<<endl;
+		cout<<"\n\tDNI--> "<<alumnos_[i].getDNI()<<endl;
+		cout<<"\n\tNombre--> "<<alumnos_[i].getNombre()<<endl;
+		cout<<"\n\tApellidos--> "<<alumnos_[i].getApellidos()<<endl;
+		cout<<"\n\tTelefono--> "<<alumnos_[i].getTelefono()<<endl;
+		cout<<"\n\tDireccion--> "<<alumnos_[i].getDireccion()<<endl;
+		cout<<"\n\temail--> "<<alumnos_[i].getEmail()<<endl;
+		cout<<"\n\tCurso mas alto--> "<<alumnos_[i].getCursoMasAlto()<<endl;
+		cout<<"\n\tLider--> "<<alumnos_[i].getLider()<<endl;
+		cout<<"\n\tEquipo--> "<<alumnos_[i].getEquipo()<<endl;
+	}
 }
