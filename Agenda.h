@@ -1,4 +1,4 @@
-//Clase Agenda realizada por Jorge Jesús Chaparro Ibarra
+//Clase Agenda
 
 #ifndef AGENDA_H
 #define AGENDA_H
@@ -14,7 +14,7 @@ using namespace std;
 
 class Agenda {
 private:
-	vector <Alumno> alumnos_;
+	std::vector <alumno> alumnos_;
 	string usuario_;
 	string password_;
 public:
@@ -33,7 +33,17 @@ public:
 	void registerme();
 	void registerpassword(string usuario);
 	void writetofile(string usuario, string password);
-	inline int tamVect(){return alumnos_.size()};
+
+	//Funciones del Vector de alumnos
+	
+	void insertar();
+	void ModificaAlumno();
+	void MostrarAlumno(int pos);
+	void MostrarTodos();
+	void gestionarLideres(int equipo);
+	int buscarDNI();
+	int buscarApellido();
+
 
 };
 
