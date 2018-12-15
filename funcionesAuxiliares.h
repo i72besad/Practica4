@@ -8,7 +8,7 @@ int buscar();
 void Mostrar();
 void gestionarLiderAlumno();
 void insertarAlumno();
-
+void eliminar();
 
 #endif
 
