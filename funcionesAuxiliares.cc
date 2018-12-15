@@ -1,4 +1,6 @@
 
+
+
 #include <iostream>
 #include <string>  
 
@@ -121,7 +123,7 @@ void Modificar(){
 	ModificaAlumno();
 }
 
-void Mostar(){
+void Mostrar(){
 	int opc;
 	cout << "..:Menú de Mostrar Alumnos:..\n" << endl;
 	cout << "Elige la opción deseada: \n 0.- Mostrar un Alumno.\n 1.- Mostrar todos los alumnos.\n" << endl;
@@ -133,4 +135,29 @@ void Mostar(){
 		cout << "..:ERROR:..\n La opción no está disponible." << endl;
 		exit(-1);
 	}
+}
+
+
+void insertarAlumno()
+{
+
+	insertar();
+
+
+}
+
+void gestionarLiderAlumno()
+{
+
+	int equipo;
+
+
+	cout<<"Introduce el numero del equipo:"<<endl;
+	cin>>equipo;
+
+
+	gestionarLideres(equipo);
+
+
+
 }
