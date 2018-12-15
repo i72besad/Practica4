@@ -120,12 +120,13 @@ void Agenda::writetofile(string usuario, string password){
 
 
 void Agenda::insertar(){
-	/*
-	Alumno al;
+	
+	
 	string dni,nombre,apellidos,direccion,nacimiento,email;
 	int telefono,postal,cursomax,equipo;
 	bool lider;
 	
+	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
 	cout << "DNI:";
 	cin>>dni;
@@ -175,11 +176,10 @@ void Agenda::insertar(){
 	al.setLider(lider);
 
 	
-
 	alumnos_.push_back(al);
 
 
-*/
+
 	
 }
 

@@ -129,14 +129,16 @@ void Mostrar(Agenda ag){
 	cout << "..:Menú de Mostrar Alumnos:..\n" << endl;
 	cout << "Elige la opción deseada: \n 0.- Mostrar un Alumno.\n 1.- Mostrar todos los alumnos.\n" << endl;
 	cin >>opc;
-	int pos = buscar(ag);
+	
 
 	if(opc==0){
-		
+		int pos = buscar(ag);
 		ag.MostrarAlumno(pos);
-	}else if(opc==1){
+	}
+	if(opc==1){
 		ag.MostrarTodos();
-	}else{
+	}
+	else{
 		cout << "..:ERROR:..\n La opción no está disponible." << endl;
 		exit(-1);
 	}
