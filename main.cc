@@ -6,8 +6,9 @@
 
 
 
-#include "funciones.h"
+#include "funcionesAuxiliares.h"
 #include "macros.hpp"
+using namespace std;
 
 
 
@@ -40,32 +41,33 @@ int main(){
 
 			case 1: 
 					std::cout << "[1] Buscar Alumno" << std::endl;
-
+					buscar();
 
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 2: 
 					std::cout << "[2] Guardar copia de seguridad" << std::endl;
-					GuardarCopia();
+					//GuardarCopia();
 
 				break;
 
 			case 3: 
 					std::cout << "[3] Cargar copia de seguridad" << std::endl;
-					CargarCopia();
+					//CargarCopia();
 
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 4: 
 				  	std::cout << "[4] Mostrar Alumno: " << std::endl;
-				  	MostrarAlumno(); 
+				  	Mostrar(); 
 
 					break;
 
 			case 5: 
 				  	std::cout << "[5] Modificar datos del Alumno: " << std::endl; 
+				  	Modificar();
 
 					break;
 
@@ -73,6 +75,7 @@ int main(){
 			//////////////////////////////////////////////////////////////////////////////
 			case 6: 
 					std::cout << "[6] Insertar Alumno:" << std::endl;
+					insertarAlumno();
 
 					break;
 
@@ -85,11 +88,13 @@ int main(){
 			//////////////////////////////////////////////////////////////////////////////
 			case 8: 
 					std::cout << "[8] Gestionar líderes: " << std::endl;
+					gestionarLiderAlumno();
 
 					break;
 
 			case 9: 
-					std::cout << "[9] Por si falta algo " << std::endl;
+					std::cout << "[9] Mostrar Todos " << std::endl;
+					Mostrar();
 
 					break;
 

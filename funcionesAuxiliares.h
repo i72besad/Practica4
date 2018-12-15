@@ -9,6 +9,7 @@ void Mostrar();
 void gestionarLiderAlumno();
 void insertarAlumno();
 void eliminar();
+void Modificar();
 
 #endif
 

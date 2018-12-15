@@ -6,13 +6,13 @@
 
 // Para usar atoi
 #include <stdlib.h>
-
-#include "funciones.h"
+#include "Agenda.h"
+#include "funcionesAuxiliares.h"
 
 
 #include "macros.hpp"
 
-
+using namespace std;
 
 int menu()
 {

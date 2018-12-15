@@ -14,7 +14,7 @@ using namespace std;
 
 class Agenda {
 private:
-	std::vector <alumno> alumnos_;
+	std::vector <Alumno> alumnos_;
 	string usuario_;
 	string password_;
 public:
