@@ -1,93 +1,132 @@
+
+// Para los flujos de entrada y salida y para usar locale
 #include <iostream>
-#include "Agenda.h"
-#include "BuscarAlumno.h"
-//#include "InsertarAlumno.h"
-//#include "BorrarAlumno.h"
-#include "ModificarAlumno.h"
-#include "MostrarAlumno.h"
-//#include "GestionarLideres.h"
-#include "Copia_Seguridad.h"
+
+
+#include <string>
 
 
 
+#include "funciones.h"
+#include "macros.hpp"
 
+
+
+/*! 
+	\brief   Programa principal de la práctica 1: provincia y municipios
+	\return  int
+*/
 int main(){
 
-	int opc,save;
-	Agenda a;
 
-	a.mainmenu();
-	
+	int opcion;
 
-	cout<<"\nBienvenido a su Agenda de alumnos personal, ¿qué desea hacer?"<<endl;
-	
+	do{
+		// Se elige la opción del menún
+		opcion = menu();		
 
-	while(opc!=8){
+		std::cout << CLEAR_SCREEN;
+		PLACE(3,1);
 
-		cout<<"\n\t0--> Buscar Alumno"<<endl;
-		cout<<"\t1--> Insertar Alumno"<<endl;
-		cout<<"\t2--> Borrar Alumno"<<endl;
-		cout<<"\t3--> Modificar Alumno"<<endl;
-		cout<<"\t4--> Mostrar Alumno"<<endl;
-		cout<<"\t5--> Mostrar Lista de Alumnos"<<endl;
-		cout<<"\t6--> Gestionar Líderes de Equipo"<<endl;
-		cout<<"\t7--> Guardar"<<endl;
-		cout<<"\t8--> Salir"<<endl;
-		cin>>opc;
-		cin.ignore();
-		switch(opc){
-			case 0:
-				BuscarAlumno();
-				break;
-			case 1:
-				//InsertarAlumno();
-				break;
-			case 2:
-				//BorrarAlumno();
-				break;
-			case 3:
-				ModificaAlumno();
-				break;
-			case 4:
-				MostrarAlumno();
-				break;
-			case 5:
-				//MostrarTodos();
-				break;
-			case 6:
-				//GestionarLideres();
-				break;
-			case 7:
-				GuardarCopia();
-				break;		
-			case 8:
-				cout<<"¿Quiere guardar?"<<endl;
-				cout<<"0--> Sí   1-->No"<<endl;
-				cin>>save;
-				cin.ignore();
-				if(save==0){
-					GuardarCopia();
-					CargarCopia();
-				}if(save>1 || save<0){
-					
-					while(save>1 || save<0){
-						cout<<"Error, escriba de nuevo la opción"<<endl;
-						cout<<"¿Quiere guardar?"<<endl;
-						cout<<"0--> Sí   1-->No"<<endl;
-						cin>>save;
-						cin.ignore();
-						if(save==0){
-							GuardarCopia();
-							CargarCopia();
-						}
-					}
+		// Se ejecuta la opción del menú elegida
+		switch(opcion)
+		{
+			case 0: 
+					std::cout << INVERSE;
+					std::cout << "Fin del programa" << std::endl;
+					std::cout << RESET;
+			break;
 
-				}
+		   ///////////////////////////////////////////////////////////////////
+
+			case 1: 
+					std::cout << "[1] Buscar Alumno" << std::endl;
+
+
+					break;
+
+			//////////////////////////////////////////////////////////////////////////////
+			case 2: 
+					std::cout << "[2] Guardar copia de seguridad" << std::endl;
+
 				break;
 
-		}
-	}
+			case 3: 
+					std::cout << "[3] Cargar copia de seguridad" << std::endl;
 
+					break;
+
+			//////////////////////////////////////////////////////////////////////////////
+			case 4: 
+				  	std::cout << "[4] Mostrar Alumnos: " << std::endl; 
+
+					break;
+
+			case 5: 
+				  	std::cout << "[5] Modificar datos del Alumno: " << std::endl; 
+
+					break;
+
+
+			//////////////////////////////////////////////////////////////////////////////
+			case 6: 
+					std::cout << "[6] Insertar Alumno:" << std::endl;
+
+					break;
+
+
+			case 7: 
+					std::cout << "[7] Borrar Alumno: " << std::endl;
+
+					break;
+
+			//////////////////////////////////////////////////////////////////////////////
+			case 8: 
+					std::cout << "[8] Gestionar líderes: " << std::endl;
+
+					break;
+
+			case 9: 
+					std::cout << "[9] Por si falta algo " << std::endl;
+
+					break;
+
+			case 10: 
+					std::cout << "[10] Por si falta algo" << std::endl;
+
+					break;
+
+			//////////////////////////////////////////////////////////////////////////////
+			default:
+				std::cout << BIRED;
+				std::cout << "Opción incorrecta ";
+				std::cout << RESET;
+				std::cout << "--> ";
+			  	std::cout << ONIRED;
+				std::cout << opcion << std::endl;
+				std::cout << RESET;
+     }
+  
+    if (opcion !=0)
+    {
+		PLACE(25,1);
+		std::cout << "Pulse ";
+		std::cout << BIGREEN;
+		std::cout << "ENTER";
+		std::cout << RESET;
+		std::cout << " para mostrar el ";
+		std::cout << INVERSE;
+		std::cout << "menú"; 
+		std::cout << RESET;
+
+		// Pausa
+		std::cin.ignore();
+
+		std::cout << CLEAR_SCREEN;
+    }
+	  }while(opcion!=0);
 
 	return 0;
 }
+
+
