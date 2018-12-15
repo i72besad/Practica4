@@ -1,7 +1,7 @@
 #include "BuscarAlumno.h"
 #include <iostream>
 #include <string>
-#include "Alumno.h"
+#include "alumno.h"
 #include <vector>
 
 using namespace std;

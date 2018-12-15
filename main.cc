@@ -1,8 +1,7 @@
 
 // Para los flujos de entrada y salida y para usar locale
 #include <iostream>
-
-
+#include "Agenda.h"
 #include <string>
 
 
@@ -60,7 +59,8 @@ int main(){
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 4: 
-				  	std::cout << "[4] Mostrar Alumno: " << std::endl; 
+				  	std::cout << "[4] Mostrar Alumno: " << std::endl;
+				  	MostrarAlumno(); 
 
 					break;
 
