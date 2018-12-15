@@ -1,12 +1,12 @@
+//Fichero .h de Modificar Alumno
+
 #ifndef MODIFICARALUMNO_H
 #define MODIFICARALUMNO_H
 
 #include "alumno.h"
+#include "BuscarAlumno.h"
+#include <vector>
 
-#include <iostream>
-#include <string>
-#include <list>
-
-list <Alumno> ModificaAlumno();
+void ModificaAlumno();
 
 #endif
