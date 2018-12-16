@@ -50,7 +50,7 @@ int menu()
 	posicion++;
  
 	PLACE(posicion++,10);
-	std::cout << "[4] Mostrar Alumnos";
+	std::cout << "[4] Buscar Apellido";
 
 	PLACE(posicion++,10);
 	std::cout <<  "[5] Modificar datos del Alumno";
@@ -68,10 +68,10 @@ int menu()
 	std::cout << "[8] Gestionar líderes";
 
 	PLACE(posicion++,10);
-	std::cout << "[9] Por si falta algo";
+	std::cout << "[9] Mostrar Todos";
 
 	PLACE(posicion++,10);
-	std::cout << "[10] Por si falta algo";
+	std::cout << "[10] Mostrar Uno";
 
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;

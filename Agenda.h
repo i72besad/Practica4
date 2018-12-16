@@ -48,8 +48,9 @@ public:
 
 	//Funciones de la Copia de Seguridad
 	
-	void GuardarCopia();
-	void CargarCopia();
+	//void GuardarCopia();
+	//void CargarCopia();
+	void guardarEnFichero();
 
 };
 

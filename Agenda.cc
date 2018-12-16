@@ -510,7 +510,7 @@ void Agenda::eliminarAlumno()
 }
 
 //Funciones de Copia de Seguridad
-
+/*
 void Agenda::GuardarCopia(){
 	string aux;
 	ofstream archivo_salida;
@@ -560,4 +560,74 @@ void Agenda::CargarCopia(){
 	}
 	archivo_entrada.close();
 	archivo_salida.close();
+}
+
+*/
+
+void Agenda::guardarEnFichero()
+{
+ 	string nombreFichero;
+	std::ofstream fich;
+	
+	cout<<"Introduzca el nombre del fichero"<<endl;
+	getline(cin,nombreFichero);
+
+	fich.open(nombreFichero.c_str());
+	
+	if(fich.fail())
+	{
+		std::cout << "Error al crear el fichero "  << std::endl;
+	}
+	else
+	{
+	
+		int tam = alumnos_.size();
+		
+
+		for(int i=0; i<tam; i++){
+		fich << alumnos_[i].getDNI() << ",";
+		fich << alumnos_[i].getNombre() << ",";
+		fich << alumnos_[i].getApellidos() << ",";
+		fich << alumnos_[i].getTelefono() << ",";
+		fich << alumnos_[i].getDireccion() << ",";
+		fich << alumnos_[i].getEmail() << ",";
+		fich << alumnos_[i].getCursoMasAlto() << ",";
+		fich << alumnos_[i].getLider() << "\n";
+	}
+
+	
+		fich.close();
+	}
+}
+
+void Agenda::cargarDeFichero()
+{
+	std::ifstream fich;
+	std::string aux;
+	string nombreFichero;
+
+	
+	cout<<"Introduzca el nombre del fichero a cargar"<<endl;
+	getline(cin,nombreFichero);
+
+	fich.open(nombreFichero.c_str());
+
+	if(fich.fail()){
+		
+		std::cout << "Error al abrir el fichero"<< std::endl;
+		
+	}else{
+
+
+		while ((fich >> fecha) && ( !fich.eof()))
+		{	
+		
+			m.setFecha(fecha);
+			getline(fich,aux,'\n');
+			m.setPrecipitacion(atof(aux.c_str()));
+
+			monticulo.insert(m);
+
+		}
+	}
 }
