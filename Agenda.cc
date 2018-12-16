@@ -600,7 +600,7 @@ void Agenda::guardarEnFichero()
 	}
 }
 
-void Agenda::cargarDeFichero()
+/*void Agenda::cargarDeFichero()
 {
 	std::ifstream fich;
 	std::string aux;
@@ -630,4 +630,4 @@ void Agenda::cargarDeFichero()
 
 		}
 	}
-}
+}*/

@@ -22,6 +22,8 @@ int main(){
 	int opcion;
 	Agenda ag;
 
+	ag.mainmenu();
+
 	do{
 		// Se elige la opción del menún
 		opcion = menu();		
