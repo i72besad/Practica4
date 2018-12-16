@@ -175,6 +175,7 @@ void Agenda::insertar(){
 	
 	cout << "Email:";
 	getline(cin,email);
+	al.setEmail(email);
 
 	cout << "Curso más Alto matriculado:";
 	cin>>cursomax;
