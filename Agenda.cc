@@ -279,7 +279,7 @@ void Agenda::ModificaAlumno(){
 				case '8':
 					cout << "Introduce su nuevo equipo: \n";
 					cin >> auxi;
-					cin.ignore()
+					cin.ignore();
 					alumnos_[pos].setEquipo(auxi);
 					break;
 
