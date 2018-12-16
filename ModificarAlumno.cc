@@ -24,8 +24,8 @@ void ModificaAlumno(){
 			cout << "4. Teléfono:" << alumnos_[pos].getTelefono() << "\n" <<endl;
 			cout << "5. Dirección:" << alumnos_[pos].getDireccion() << "\n" << endl;
 			cout << "6. eMail:" << alumnos_[pos].getEmail() << "\n" << endl;
-			cout << "7. Curso más Alto matriculado:" << alumnos_[pos].getCurso() << "\n" << endl;
-			cout << "8. Número de equipo:" << alumnos_[pos].getNequipo() << "\n" << endl;
+			cout << "7. Curso más Alto matriculado:" << alumnos_[pos].getCursoMasAlto() << "\n" << endl;
+			cout << "8. Número de equipo:" << alumnos_[pos].getEquipo() << "\n" << endl;
 			cout << "9. Líder de equipo: ";
 			if(alumnos_[pos].getLider()==true){
 				cout << "Sí" << endl;
@@ -77,13 +77,13 @@ void ModificaAlumno(){
 				case '7':
 					cout << "Introduce el nuevo Curso más Alto: \n";
 					cin >> auxi;
-					alumnos_[pos].setCurso(auxi);
+					alumnos_[pos].setCursoMasAlto(auxi);
 					break;
 
 				case '8':
 					cout << "Introduce su nuevo equipo: \n";
 					cin >> auxi;
-					alumnos_[pos].setNequipo(auxi);
+					alumnos_[pos].setEquipo(auxi);
 					break;
 
 				case '9':
