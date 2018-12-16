@@ -12,29 +12,16 @@
 
 using namespace std;
 
-void Agenda::mainmenu(){
-	int choice;
-	bool cinfail;
-	cout << "Hola, ¿Qué quieres hacer, loguearte o registrarte?\n[1] Login\n[2] Registrar" <<endl;
-	cin >> choice; 
-	do{
-    cinfail = cin.fail();
-    cin.clear();
-    cin.ignore(10000,'\n');
-    int choice;
+bool Agenda::mainmenu(){
 
-    }while(cinfail == true);{
-        switch(choice){
-            case 1:
-                login();
-                break;
+	if(login()==true){
+		return true;
+	}else{
+		return false;
+	}
 
-            case 2:
-                registerme();
-                break;
-        }
-    }
 }
+
 
 bool Agenda::login(){
 	string usuario, usuariotxt, password, aux;
@@ -70,7 +57,7 @@ bool Agenda::login(){
 	}
 }
 
-void Agenda::registerme(){
+/*void Agenda::registerme(){
 	int confirmation;
 	string usuario;
     cout << "Por favor, introduce el nombre de Usuario que deseas: " << endl;
@@ -121,7 +108,7 @@ void Agenda::writetofile(string usuario, string password){
     writefile.open(file.c_str());
     writefile << password;
     writefile.close();
-}
+}*/
 
 
 void Agenda::insertar(){
@@ -133,56 +120,60 @@ void Agenda::insertar(){
 	
 	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
-cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
-	cout << "DNI:";
+	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
+	cout << "DNI: ";
 	getline(cin,dni);
 
-	al.setDNI(dni);
+	if(comprobarDNI(dni)==true){
+		al.setDNI(dni);
+	}else{
+		cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
+	}
 	
-	cout << "Nombre:";
+	cout << "Nombre: ";
 	getline(cin,nombre);
 
 	al.setNombre(nombre);
 
 	
-	cout << "Apellidos:";
+	cout << "Apellidos: ";
 	getline(cin,apellidos);
 
 	al.setApellidos(apellidos);
 
 	
-	cout << "Teléfono:";
+	cout << "Teléfono: ";
 	cin>>telefono;
 	cin.ignore();
 
 	al.setTelefono(telefono);
 
 
-	cout << "Dirección:";
+	cout << "Dirección: ";
 	getline(cin,direccion);
 
 	al.setDireccion(direccion);
 
-	cout << "Codigo Postal:";
+	cout << "Codigo Postal: ";
 	cin>>postal;
 	cin.ignore();
 
 	al.setPostal(postal);
 
-	cout << "Fecha de nacimiento:";
+	cout << "Fecha de nacimiento: ";
 	getline(cin,nacimiento);
 
 	al.setNacimiento(nacimiento);
 	
-	cout << "Email:";
+	cout << "Email: ";
 	getline(cin,email);
 	al.setEmail(email);
 
-	cout << "Curso más Alto matriculado:";
+	cout << "Curso más Alto matriculado: ";
 	cin>>cursomax;
 	al.setCursoMasAlto(cursomax);
 
-	cout << "Número de equipo:";
+	cout << "Número de equipo: ";
 	cin>>equipo;
 	al.setEquipo(equipo);
 
@@ -196,11 +187,24 @@ cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
 	}
 	
 	alumnos_.push_back(al);
-	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
+	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO	
+}
 
+bool Agenda::comprobarDNI(string nuevo_dni){
+    if (nuevo_dni.size()!=9){
+        return false;
+    }
+    if(nuevo_dni[8] != letraDNI(stoi(nuevo_dni))){
+        return false;
+    }
+    return true;
+}
 
-
-	
+char Agenda::letraDNI(int dni){
+    int letra;
+    letra = dni%23;
+    string letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+    return letras[letra];
 }
 
 void Agenda::ModificaAlumno(){
@@ -214,14 +218,14 @@ void Agenda::ModificaAlumno(){
 		do {
 			cout << "Elige el atributo del Alumno que desea modificar: \n" << endl;
 			
-			cout << "1. DNI:" << alumnos_[pos].getDNI() << "\n" << endl;
-			cout << "2. Nombre:" << alumnos_[pos].getNombre() << "\n" << endl;
-			cout << "3. Apellidos:" << alumnos_[pos].getApellidos() << "\n" << endl;
-			cout << "4. Teléfono:" << alumnos_[pos].getTelefono() << "\n" <<endl;
+			cout << "1. DNI: " << alumnos_[pos].getDNI() << "\n" << endl;
+			cout << "2. Nombre: " << alumnos_[pos].getNombre() << "\n" << endl;
+			cout << "3. Apellidos: " << alumnos_[pos].getApellidos() << "\n" << endl;
+			cout << "4. Teléfono: " << alumnos_[pos].getTelefono() << "\n" <<endl;
 			cout << "5. Dirección:" << alumnos_[pos].getDireccion() << "\n" << endl;
-			cout << "6. eMail:" << alumnos_[pos].getEmail() << "\n" << endl;
-			cout << "7. Curso más Alto matriculado:" << alumnos_[pos].getCursoMasAlto() << "\n" << endl;
-			cout << "8. Número de equipo:" << alumnos_[pos].getEquipo() << "\n" << endl;
+			cout << "6. eMail: " << alumnos_[pos].getEmail() << "\n" << endl;
+			cout << "7. Curso más Alto matriculado: " << alumnos_[pos].getCursoMasAlto() << "\n" << endl;
+			cout << "8. Número de equipo: " << alumnos_[pos].getEquipo() << "\n" << endl;
 			cout << "9. Líder de equipo: ";
 			if(alumnos_[pos].getLider()==true){
 				cout << "Sí" << endl;
@@ -235,58 +239,58 @@ void Agenda::ModificaAlumno(){
 			cin.ignore();
 
 			switch (opcion) {
-				case '1':
+				case 1:
 					cout << "Introduce el nuevo DNI:  \n";
 					getline(cin, auxs);
 					alumnos_[pos].setDNI(auxs);
 					break;
 
-				case '2':
+				case 2:
 					cout << "Introduce el nuevo Nombre:  \n";
 					getline(cin, auxs);
 					alumnos_[pos].setNombre(auxs);
 					break;
 
-				case '3':
+				case 3:
 					cout << "Introduce los nuevos Apellidos: \n";
 					getline(cin, auxs);
 					alumnos_[pos].setApellidos(auxs);
 					break;
 
-				case '4':
+				case 4:
 					cout << "Introduce el nuevo Teléfono: \n";
 					cin >> auxi;
 					cin.ignore();
 					alumnos_[pos].setTelefono(auxi);
 					break;
 
-				case '5':
+				case 5:
 					cout << "Introduce la nueva Dirección: \n";
 					getline(cin, auxs);
 					alumnos_[pos].setDireccion(auxs);
 					break;
 
-				case '6':
+				case 6:
 					cout << "Introduce el nuevo eMail: \n";
 					getline(cin, auxs);
 					alumnos_[pos].setEmail(auxs);
 					break;
 
-				case '7':
+				case 7:
 					cout << "Introduce el nuevo Curso más Alto: \n";
 					cin >> auxi;
 					cin.ignore();
 					alumnos_[pos].setCursoMasAlto(auxi);
 					break;
 
-				case '8':
+				case 8:
 					cout << "Introduce su nuevo equipo: \n";
 					cin >> auxi;
 					cin.ignore();
 					alumnos_[pos].setEquipo(auxi);
 					break;
 
-				case '9':
+				case 9:
 					cout << "Introduce lider: \n";
 					cin >> auxi;
 					if(auxi == 1)
@@ -295,19 +299,26 @@ void Agenda::ModificaAlumno(){
 						alumnos_[pos].setLider(false);
 					break;
 
-				case '0':
+				case 0:
 					cout << "El Alumno ha sido modificado correctamente.\n";
 					break;
 
 				default: 
 					cout << opcion << "La opción introducida no está dentro del Menú.\n" << endl;
+					break;
 			}
+
+			cout << "opcion tiene  "<< opcion;
+
+
 		}while (opcion > 0 );
 }
 
 
 
-void Agenda::MostrarAlumno(int pos){
+void Agenda::MostrarAlumno(){
+
+	int pos=buscarDNI();
 
 
 	cout<<"\n\n\tDNI--> "<<alumnos_[pos].getDNI()<<endl;
@@ -354,7 +365,6 @@ void Agenda::gestionarLideres()
 
 	cout<<"Equipo: "<<endl;
 	cin>>equipo;
-	cin.ignore();
 
 
 
@@ -372,36 +382,37 @@ void Agenda::gestionarLideres()
 				pos3 = i;
 
 		}
-	
+	}
+
 	std::cout<<"Los miembros son: " << endl;
 
 	if(pos1 != -1)
 	{
-		std::cout<< pos1 << alumnos_[pos1].getNombre() << alumnos_[pos1].getApellidos();
+		std::cout<< pos1 <<" " << alumnos_[pos1].getNombre() << " " << alumnos_[pos1].getApellidos() << "\n" << endl;
 
 		if(alumnos_[pos1].getLider() == true)
 		{
 		lider = pos1;
-		std::cout<< "Este alumno es el lider"<< endl;
+		std::cout<< "Este alumno es el líder. "<< endl;
 		}	
 		
 	}
 	if(pos2 != -1)
 	{
-		std::cout<< pos2 << alumnos_[pos2].getNombre() << alumnos_[pos2].getApellidos();
+		std::cout<< pos2 << " " << alumnos_[pos2].getNombre() << " " << alumnos_[pos2].getApellidos() << "\n" << endl;
 		if(alumnos_[pos2].getLider() == true)
 		{
 		lider = pos2;
-		std::cout<< "Este alumno es el lider"<< endl;
+		std::cout<< "Este alumno es el líder. "<< endl;
 		}
 	}
 	if(pos3 != -1)
 	{
-		std::cout<< pos3 << alumnos_[pos3].getNombre() << alumnos_[pos3].getApellidos();
+		std::cout<< pos3 <<" " << alumnos_[pos3].getNombre() << " " << alumnos_[pos3].getApellidos() << "\n" << endl;
 		if(alumnos_[pos3].getLider() == true)
 		{
 		lider = pos3;
-		std::cout<< "Este alumno es el lider"<< endl;
+		std::cout<< "Este alumno es el líder. "<< endl;
 		}
 	}
 
@@ -427,7 +438,7 @@ void Agenda::gestionarLideres()
 
 	}
 
-	}
+	
 
 
 
@@ -440,7 +451,7 @@ int Agenda::buscarDNI() // devuelve la posicion donde esta el alumno, buscando p
 {
 	int opc;
 	string DNI;
-	cout<<"Introduzca el DNI:"<<endl;
+	cout<<"Introduzca el DNI: "<<endl;
 	getline(cin,DNI,'\n');
 
 	int tam = tamVect();
@@ -448,6 +459,7 @@ int Agenda::buscarDNI() // devuelve la posicion donde esta el alumno, buscando p
 	for(int i=0;i<tam;i++){
 
 		if(alumnos_[i].getDNI() == DNI){
+			cout<<"Alumno encontrado!"<<endl;			
 			return i;
 		}
 
@@ -455,6 +467,7 @@ int Agenda::buscarDNI() // devuelve la posicion donde esta el alumno, buscando p
 	cout<<"Error, el alumno no existe, ¿desea insertar un nuevo alumno?"<<endl;
 	cout<<"\nSí-->1   No-->0"<<endl;
 	cin>>opc;
+
 	while(opc>1 || opc<0){
 		cout<<"Mal escrito, repita su opción:"<<endl;
 		cout<<"\nSí-->1   No-->0"<<endl;
@@ -472,6 +485,7 @@ int Agenda::buscarApellido(){
 	int cont = 0;
 
 	cout<<"Introduzca el Apellido:"<<endl;
+	std::cin.ignore();
 	getline(cin,Apellido,'\n');
 
 	int tam=tamVect();
@@ -502,81 +516,33 @@ void Agenda::eliminarAlumno()
 	int pos = buscarDNI();
 
 
-	//alumnos_.erase(pos);
+	alumnos_.erase(alumnos_.begin()+pos);
 
 	cout<<"Alumno eliminado"<<endl;
 
 
 }
 
-//Funciones de Copia de Seguridad
-/*
-void Agenda::GuardarCopia(){
-	string aux;
-	ofstream archivo_salida;
-	int tam = tamVect();
 
-	archivo_salida.open("Copia_Seguridad");
-
-	for(int i=0; i<tam; i++){
-		archivo_salida << alumnos_[i].getDNI() << "\n";
-		archivo_salida << alumnos_[i].getNombre() << "\n";
-		archivo_salida << alumnos_[i].getApellidos() << "\n";
-		archivo_salida << alumnos_[i].getTelefono() << "\n";
-		archivo_salida << alumnos_[i].getDireccion() << "\n";
-		archivo_salida << alumnos_[i].getEmail() << "\n";
-		archivo_salida << alumnos_[i].getCursoMasAlto() << "\n";
-		archivo_salida << alumnos_[i].getLider() << "\n\n";
-	}
-
-	archivo_salida.close();
-
-	ifstream archivo_entrada;
-	archivo_entrada.open("Copia_Seguridad", ios::in);
-
-	ofstream archivo_salida1;
-	archivo_salida1.open("Copia_Seguridad.bin", ios::out | ios::binary);
-
-	while(!archivo_entrada.eof()){
-		getline(archivo_entrada, aux);
-		aux += "\n";
-		archivo_salida1.write(aux.c_str(), aux.size());
-	}
-	archivo_entrada.close();
-	archivo_salida1.close();
-}
-
-void Agenda::CargarCopia(){
-	char aux[250];
-	ifstream archivo_entrada;
-	archivo_entrada.open("Copia_Seguridad.bin", ios::in | ios::binary);
-
-	ofstream archivo_salida;
-	archivo_salida.open("Base_Datos");
-
-	while(!archivo_entrada.eof()){
-		archivo_entrada.read(aux, 250);
-		archivo_salida << aux;
-	}
-	archivo_entrada.close();
-	archivo_salida.close();
-}
-
-*/
 
 void Agenda::guardarEnFichero()
 {
  	string nombreFichero;
+ 	string ponerBin;
+
 	std::ofstream fich;
 	
 	cout<<"Introduzca el nombre del fichero"<<endl;
+	std::cin.ignore();
 	getline(cin,nombreFichero);
 
-	fich.open(nombreFichero.c_str());
+	ponerBin=nombreFichero+".bin";
+
+	fich.open(ponerBin.c_str(), ios::out | ios::binary);
 	
 	if(fich.fail())
 	{
-		std::cout << "Error al crear el fichero "  << std::endl;
+		std::cout << "Error al crear el fichero. "  << std::endl;
 	}
 	else
 	{
@@ -592,7 +558,7 @@ void Agenda::guardarEnFichero()
 		fich << alumnos_[i].getDireccion() << ",";
 		fich << alumnos_[i].getEmail() << ",";
 		fich << alumnos_[i].getCursoMasAlto() << ",";
-		fich << alumnos_[i].getLider() << "\n";
+		fich << alumnos_[i].getLider() << ";";
 	}
 
 	
@@ -600,155 +566,65 @@ void Agenda::guardarEnFichero()
 	}
 }
 
-/*void Agenda::cargarDeFichero()
-{
+
+void Agenda::cargar_backup(){
+
+  
 	std::ifstream fich;
+	std::string aux;
+	std::string nombreFichero;
+	std::string conBin;
 	
-	string nombreFichero;
-	Alumno aux;
-	 char nombre[30], apellidos[30], fechanacimiento[30], email[30], direccion[30];
-  string nombrex, apellidosx, fechanacimientox, emailx, direccionx;
-  int dnix, tlfx, grupox, cursox;
-  bool liderx;
-
+	string dni,nombre,apellidos,direccion,nacimiento,email;
+	int telefono,postal,cursomax,equipo;
+	int lider;
 	
-	cout<<"Introduzca el nombre del fichero a cargar"<<endl;
-	getline(cin,nombreFichero);
+	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
-	fich.open(nombreFichero.c_str());
+	cout << "Introduce el nombre del Fichero: " << endl;
+	getline(cin, nombreFichero);
+
+	conBin=nombreFichero+".bin";
+
+	fich.open(conBin.c_str(), ios::in | ios::binary);
 
 	if(fich.fail()){
 		
 		std::cout << "Error al abrir el fichero"<< std::endl;
-		
-	}else{
-
-
-		while(fichero.read((char *)&dnix, sizeof(int))){
-		    fichero.read((char *)&cursox, sizeof(int));
-		    fichero.read((char *)&tlfx, sizeof(int));
- 		   fichero.read((char *)&grupox, sizeof(int));
-		    fichero.read((char *)&nombre, 30);
-		    fichero.read((char *)&apellidos, 30);
-		    fichero.read((char *)&fechanacimiento, 30);
-		    fichero.read((char *)&email, 30);
-		    fichero.read((char *)&direccion, 30);
-		    fichero.read((char *)&liderx, sizeof(bool));
-
-
- 		   nombrex = nombre;
- 		   apellidosx = apellidos;
- 		   fechanacimientox = fechanacimiento;
- 		   emailx = email;
- 		   direccionx = direccion;
-
-  		    aux.setDNI(dnix);
- 		     aux.setCurso(cursox);
-  		    aux.setTlf(tlfx);
- 		     aux.setGrupo(grupox);
- 		     aux.setNombre(nombrex);
- 		     aux.setApellidos(apellidosx);
- 		     aux.setFecha_nacimiento(fechanacimientox);
-   		   aux.setEmail(emailx);
-   		   aux.setDireccion(direccionx);
-   		   aux.setLider(liderx);
-
-   		   alumnos_.push_back(aux);
-
-  }
 	}
-}
-*/
-void Agenda::cargar_backup(){
-
-  string ruta;
-  fstream fichero;
-
-  Agenda ag;
-
-  int variable = -1;
-
-  char nombre[30], apellidos[30], fechanacimiento[30], email[30], direccion[30];
-  string nombrex, apellidosx, emailx, direccionx,postal,nacimiento;
-  int dnix, tlfx, grupox, cursox;
-  bool liderx;
-    Alumno aux(dnix,  nombrex,  apellidosx,  tlfx, emailx, direccionx,postal="", nacimiento="",  cursox, grupox,  liderx);
-
-
-while(variable == -1){
-  cout<<"Introduce la ruta o deja esta campo vacío y se cargará la ruta predeterminada: ";
-  setbuf(stdin , NULL);
-  getline(cin , ruta);
 
 
 
-  if(ruta.empty()){
-  fichero.open( "backup.bin" , ios::in | ios::binary);
-
-    if(!fichero){
-      cout<<"Error al abrir el back_up"<<endl;
-      variable = -1;
-    }
-    else{
-      cout<<"Exito al abrir el back_up"<<endl;
-      variable = 0;
-    }
-  }//cierro if grande
-
-
-
-  else{
-    fichero.open( ruta.c_str() , ios::in | ios::binary);
-
-      if(!fichero){
-        cout<<"Error al abrir el back_up"<<endl;
-        variable = -1;
-      }
-      else{
-        cout<<"Exito al abrir el back_up"<<endl;
-        variable = 0;
-      }
-    }//cierro else grande
-}
+	while (getline(fich,aux,',') && not fich.eof())
+	{	
+	
+		al.setDNI(aux);
+		getline(fich,aux,',');
+		al.setNombre(aux);
+		getline(fich,aux,',');
+		al.setApellidos(aux);
+		getline(fich,aux,',');
+		al.setTelefono(atoi(aux.c_str()));
+		getline(fich,aux,',');
+		al.setEmail(aux);
+		getline(fich,aux,',');
+		al.setDireccion(aux);
+		getline(fich,aux,',');
+		al.setPostal(atoi(aux.c_str()));
+		getline(fich,aux,',');
+		al.setNacimiento(aux);
+		getline(fich,aux,',');
+		al.setCursoMasAlto(atoi(aux.c_str()));
+		getline(fich,aux,',');
+		al.setEquipo(atoi(aux.c_str()));
+		getline(fich,aux,';');
+		al.setLider(atoi(aux.c_str()));
 
 
-
-//x = ag.getAlumnos();
-
-  while(fichero.read((char *)&dnix, sizeof(int))){
-    fichero.read((char *)&cursox, sizeof(int));
-    fichero.read((char *)&tlfx, sizeof(int));
-    fichero.read((char *)&grupox, sizeof(int));
-    fichero.read((char *)&nombre, 30);
-    fichero.read((char *)&apellidos, 30);
-    //fichero.read((char *)&fechanacimiento, 30);
-    fichero.read((char *)&email, 30);
-    fichero.read((char *)&direccion, 30);
-    fichero.read((char *)&liderx, sizeof(bool));
+		alumnos_.push_back(al);
 
 
-    nombrex = nombre;
-    apellidosx = apellidos;
-    //fechanacimientox = fechanacimiento;
-    emailx = email;
-    direccionx = direccion;
+	}
 
-      aux.setDNI(dnix);
-      aux.setCursoMasAlto(cursox);
-      aux.setTelefono(tlfx);
-      aux.setEquipo(grupox);
-      aux.setNombre(nombrex);
-      aux.setApellidos(apellidosx);
-      //aux.setFecha_nacimiento(fechanacimientox);
-      aux.setEmail(emailx);
-      aux.setDireccion(direccionx);
-      aux.setLider(liderx);
-
-      alumnos_.push_back(aux);
-
-  }
-
-  fichero.close();
-//cout<<"Fichero cargado con exito"<<endl;
 
 }
