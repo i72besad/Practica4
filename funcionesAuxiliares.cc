@@ -184,3 +184,20 @@ void eliminar(Agenda ag)
 
 
 }
+
+void Copia(Agenda ag){
+	int opc;
+	cout << "Elige la opción deseada:\n0.- Guardar Copia de Seguridad\n1.- Cargar Copia de Seguridad\n"<<endl;
+	cin >> opc;
+
+	if(opc==0){
+		cout << "Cargando...\n" << endl;
+		ag.GuardarCopia();
+	}else if(opc==1){
+		cout << "Cargando...\n" << endl;
+		ag.CargarCopia();
+	}else{
+		cout << ".:ERROR:.\nLa opción introducida no es válida.\n" << endl;
+	}
+
+}
