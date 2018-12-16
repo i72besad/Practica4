@@ -46,6 +46,11 @@ public:
 	inline int tamVect(){return alumnos_.size();};
 	void eliminarAlumno();
 
+	//Funciones de la Copia de Seguridad
+	
+	void GuardarCopia();
+	void CargarCopia();
+
 };
 
 #endif
