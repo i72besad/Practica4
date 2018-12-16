@@ -1,4 +1,3 @@
-
 // Para los flujos de entrada y salida y para usar locale
 #include <iostream>
 #include "Agenda.h"
@@ -7,7 +6,6 @@
 
 #include <vector>
 
-#include "funcionesAuxiliares.h"
 #include "macros.hpp"
 using namespace std;
 
@@ -17,12 +15,14 @@ using namespace std;
 	\brief   Programa principal de la práctica 1: provincia y municipios
 	\return  int
 */
+int menu();
+
 int main(){
 
 	int opcion;
 	Agenda ag;
 
-	ag.mainmenu();
+if(ag.mainmenu()==true){
 
 	do{
 		// Se elige la opción del menún
@@ -57,7 +57,7 @@ int main(){
 
 			case 3: 
 					std::cout << "[3] Cargar copia de seguridad" << std::endl;
-					//ag.CargarCopia();
+						ag.cargar_backup();
 
 					break;
 
@@ -103,7 +103,7 @@ int main(){
 
 			case 10: 
 					std::cout << "[10] Mostrar uno" << std::endl;
-					ag.MostrarAlumno(0);
+					ag.MostrarAlumno();
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
@@ -135,8 +135,91 @@ int main(){
 		std::cout << CLEAR_SCREEN;
     }
 	  }while(opcion!=0);
+}else{
+	exit(-1);
+}
 
 	return 0;
 }
 
 
+int menu()
+{
+	int opcion;
+	int posicion;
+
+	// Se muestran las opciones del menú
+	posicion=2;
+
+	// Se borra la pantalla
+	std::cout << CLEAR_SCREEN;
+
+	PLACE(1,10);
+	std::cout << BIBLUE;
+	std::cout << "Programa principal | Opciones del menú";
+	std::cout << RESET;
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);
+	std::cout <<  "[1] Buscar Alumno";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);
+	std::cout << "[2] Guardar copia de seguridad";
+
+	PLACE(posicion++,10);
+	std::cout << "[3] Cargar copia de seguridad";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+ 
+	PLACE(posicion++,10);
+	std::cout << "[4] Buscar Apellido";
+
+	PLACE(posicion++,10);
+	std::cout <<  "[5] Modificar datos del Alumno";
+
+	PLACE(posicion++,10);
+	std::cout << "[6] Insertar Alumno";
+
+	PLACE(posicion++,10);
+	std::cout << "[7] Borrar Alumno";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);
+	std::cout << "[8] Gestionar líderes";
+
+	PLACE(posicion++,10);
+	std::cout << "[9] Mostrar Todos";
+
+	PLACE(posicion++,10);
+	std::cout << "[10] Mostrar Uno";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);
+	std::cout << BIRED << "[0] Salir";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);
+	std::cout << BIGREEN;
+	std::cout << "Opción: ";
+	std::cout << RESET;
+
+	// Se lee el número de opción
+	std::cin >> opcion;
+
+    // Se elimina el salto de línea del flujo de entrada
+    std::cin.ignore();
+
+	return opcion;
+}
