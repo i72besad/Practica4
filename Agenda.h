@@ -28,17 +28,16 @@ public:
 	inline string getContra(){return password_;}
 
 	//Función Register
-	void mainmenu();
+	bool mainmenu();
 	bool login();
-	void registerme();
-	void registerpassword(string usuario);
-	void writetofile(string usuario, string password);
 
 	//Funciones del Vector de alumnos
 	
 	void insertar();
+	bool comprobarDNI(string nuevo_dni);
+	char letraDNI(int dni);
 	void ModificaAlumno();
-	void MostrarAlumno(int pos);
+	void MostrarAlumno();
 	void MostrarTodos();
 	void gestionarLideres();
 	int buscarDNI();
@@ -51,6 +50,8 @@ public:
 	//void GuardarCopia();
 	//void CargarCopia();
 	void guardarEnFichero();
+	//void cargarDeFichero();
+	void cargar_backup();
 
 };
 
