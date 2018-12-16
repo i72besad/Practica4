@@ -51,6 +51,8 @@ public:
 	//void GuardarCopia();
 	//void CargarCopia();
 	void guardarEnFichero();
+	//void cargarDeFichero();
+	void cargar_backup();
 
 };
 
