@@ -19,8 +19,8 @@ using namespace std;
 */
 int main(){
 
-	Agenda ag;
 	int opcion;
+	Agenda ag;
 
 	do{
 		// Se elige la opción del menún
@@ -41,34 +41,34 @@ int main(){
 		   ///////////////////////////////////////////////////////////////////
 
 			case 1: 
-					std::cout << "[1] Buscar Alumno" << std::endl;
-					buscar(ag);
+					std::cout << "[1] Buscar por dni del Alumno" << std::endl;
+					ag.buscarDNI();
 
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 2: 
 					std::cout << "[2] Guardar copia de seguridad" << std::endl;
-					//GuardarCopia();
+					ag.GuardarCopia();
 
 				break;
 
 			case 3: 
 					std::cout << "[3] Cargar copia de seguridad" << std::endl;
-					//CargarCopia();
+					ag.CargarCopia();
 
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 4: 
-				  	std::cout << "[4] Mostrar Alumno: " << std::endl;
-				  	Mostrar(ag); 
+				  	std::cout << "[4] Buscar Apellido: " << std::endl;
+				  	ag.buscarApellido(); 
 
 					break;
 
 			case 5: 
 				  	std::cout << "[5] Modificar datos del Alumno: " << std::endl; 
-				  	Modificar(ag);
+				  	ag.ModificaAlumno();
 
 					break;
 
@@ -76,32 +76,32 @@ int main(){
 			//////////////////////////////////////////////////////////////////////////////
 			case 6: 
 					std::cout << "[6] Insertar Alumno:" << std::endl;
-					insertarAlumno(ag);
+					ag.insertar();
 
 					break;
 
 
 			case 7: 
 					std::cout << "[7] Borrar Alumno: " << std::endl;
-					eliminar(ag);
+					ag.eliminarAlumno();
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 8: 
 					std::cout << "[8] Gestionar líderes: " << std::endl;
-					gestionarLiderAlumno(ag);
+					ag.gestionarLideres();
 
 					break;
 
 			case 9: 
 					std::cout << "[9] Mostrar Todos " << std::endl;
-					Mostrar(ag);
+					ag.MostrarTodos();
 
 					break;
 
 			case 10: 
-					std::cout << "[10] Por si falta algo" << std::endl;
-
+					std::cout << "[10] Mostrar uno" << std::endl;
+					ag.MostrarAlumno(0);
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
