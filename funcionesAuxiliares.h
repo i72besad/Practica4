@@ -1,4 +1,4 @@
- #ifndef _FUNCIONES_H
+#ifndef _FUNCIONES_H
 #define _FUNCIONES_H
 
 #include <iostream>
@@ -10,6 +10,8 @@ void gestionarLiderAlumno(Agenda ag);
 void insertarAlumno(Agenda ag);
 void eliminar(Agenda ag);
 void Modificar(Agenda ag);
+
+void Copia(Agenda ag);
 
 #endif
 
