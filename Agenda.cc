@@ -133,6 +133,7 @@ void Agenda::insertar(){
 	
 	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
+cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
 	cout << "DNI:";
 	getline(cin,dni);
 
@@ -195,6 +196,7 @@ void Agenda::insertar(){
 	}
 	
 	alumnos_.push_back(al);
+	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
 
 
 

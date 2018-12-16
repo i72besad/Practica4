@@ -119,12 +119,12 @@ int buscar(Agenda ag){
 	}
 }
 
-void Modificar(Agenda ag){
+/*void Modificar(Agenda ag){
 	cout << "Cargando el Menú de Modificación...\n" << endl;
 	ag.ModificaAlumno();
-}
+}*/
 
-void Mostrar(Agenda ag){
+/*void Mostrar(Agenda ag){
 	int opc;
 	cout << "..:Menú de Mostrar Alumnos:..\n" << endl;
 	cout << "Elige la opción deseada: \n 0.- Mostrar un Alumno.\n 1.- Mostrar todos los alumnos.\n" << endl;
@@ -145,17 +145,17 @@ void Mostrar(Agenda ag){
 		exit(-1);
 	}
 }
+*/
 
-
-void insertarAlumno(Agenda ag)
+/*void insertarAlumno(Agenda ag)
 {
 
 	ag.insertar();
 
 
-}
+}*/
 
-void gestionarLiderAlumno(Agenda ag)
+/*void gestionarLiderAlumno(Agenda ag)
 {
 
 	int equipo;
@@ -171,10 +171,10 @@ void gestionarLiderAlumno(Agenda ag)
 
 
 
-}
+}*/
 
 
-void eliminar(Agenda ag)
+/*void eliminar(Agenda ag)
 {
 	
 	
@@ -183,9 +183,9 @@ void eliminar(Agenda ag)
 
 
 
-}
+}*/
 
-void Copia(Agenda ag){
+/*void Copia(Agenda ag){
 	int opc;
 	cout << "Elige la opción deseada:\n0.- Guardar Copia de Seguridad\n1.- Cargar Copia de Seguridad\n"<<endl;
 	cin >> opc;
@@ -200,4 +200,4 @@ void Copia(Agenda ag){
 		cout << ".:ERROR:.\nLa opción introducida no es válida.\n" << endl;
 	}
 
-}
+}*/
