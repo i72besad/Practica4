@@ -1,5 +1,3 @@
-//ClaseAgenda.cc realizada por Jorge Jesús Chaparro Ibarra
-//Métodos de la clase Agenda
 
 #include <iostream>
 #include <string>
@@ -120,7 +118,7 @@ void Agenda::insertar(){
 	
 	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
-	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
+	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
 	cout << "DNI: ";
 	getline(cin,dni);
 
@@ -187,7 +185,7 @@ void Agenda::insertar(){
 	}
 	
 	alumnos_.push_back(al);
-	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO	
+	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
 }
 
 bool Agenda::comprobarDNI(string nuevo_dni){
@@ -467,6 +465,7 @@ int Agenda::buscarDNI() // devuelve la posicion donde esta el alumno, buscando p
 	cout<<"Error, el alumno no existe, ¿desea insertar un nuevo alumno?"<<endl;
 	cout<<"\nSí-->1   No-->0"<<endl;
 	cin>>opc;
+	cin.ignore();
 
 	while(opc>1 || opc<0){
 		cout<<"Mal escrito, repita su opción:"<<endl;
@@ -499,9 +498,12 @@ int Agenda::buscarApellido(){
 	if(cont==1){
 		cout<<"Alumno encontrado"<<endl;
 		return auxi;
-	}else{
+	}if(cont>1){
 		cout<<"Error, más de un alumno con el mismo apellido, redirigiendo a buscar por DNI..."<<endl;
 		auxi=buscarDNI();
+		return auxi;
+	}else{
+		cout<<"Error, alumno no encontrado"<<endl;
 		return auxi;
 	}
 
