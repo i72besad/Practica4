@@ -509,14 +509,11 @@ void Agenda::eliminarAlumno()
 //Funciones de Copia de Seguridad
 
 void Agenda::GuardarCopia(){
-	string aux, fichero;
+	string aux;
 	ofstream archivo_salida;
 	int tam = tamVect();
 
-	cout << "Escribe el nombre del fichero: " << endl;
-	getline(cin, fichero);
-
-	archivo_salida.open(fichero.c_str(), ios::out);
+	archivo_salida.open("Copia_Seguridad");
 
 	for(int i=0; i<tam; i++){
 		archivo_salida << alumnos_[i].getDNI() << "\n";
@@ -532,7 +529,7 @@ void Agenda::GuardarCopia(){
 	archivo_salida.close();
 
 	ifstream archivo_entrada;
-	archivo_entrada.open(fichero.c_str(), ios::in);
+	archivo_entrada.open("Copia_Seguridad", ios::in);
 
 	ofstream archivo_salida1;
 	archivo_salida1.open("Copia_Seguridad.bin", ios::out | ios::binary);
