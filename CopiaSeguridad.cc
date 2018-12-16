@@ -26,7 +26,14 @@ void GuardarCopia(){
 	archivo_salida.open(fichero.c_str(), ios::out);
 
 	for(int i=0; i<tam; i++){
-		archivo_salida << alumnos_[i];
+		archivo_salida << alumnos_[i].getDNI() << "\n";
+		archivo_salida << alumnos_[i].getNombre() << "\n";
+		archivo_salida << alumnos_[i].getApellidos() << "\n";
+		archivo_salida << alumnos_[i].getTelefono() << "\n";
+		archivo_salida << alumnos_[i].getDireccion() << "\n";
+		archivo_salida << alumnos_[i].getEmail() << "\n";
+		archivo_salida << alumnos_[i].getCursoMasAlto() << "\n";
+		archivo_salida << alumnos_[i].getLider() << "\n\n";
 	}
 
 	archivo_salida.close();
