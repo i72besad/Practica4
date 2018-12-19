@@ -50,8 +50,8 @@ if(ag.mainmenu()==true){
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 2: 
-					std::cout << "[2] Guardar copia de seguridad" << std::endl;
-					ag.guardarEnFichero();
+					std::cout << "[2] Buscar por apellido del alumno" << std::endl;
+					ag.buscarApellido();
 
 				break;
 
@@ -63,13 +63,13 @@ if(ag.mainmenu()==true){
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 4: 
-				  	std::cout << "[4] Buscar Apellido: " << std::endl;
-				  	ag.buscarApellido(); 
+				  	std::cout << "[4] Guardar copia de seguridad " << std::endl;
+				  	ag.guardarEnFichero();
 
 					break;
 
 			case 5: 
-				  	std::cout << "[5] Modificar datos del Alumno: " << std::endl; 
+				  	std::cout << "[5] Modificar datos del Alumno" << std::endl; 
 				  	ag.ModificaAlumno();
 
 					break;
@@ -77,20 +77,20 @@ if(ag.mainmenu()==true){
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 6: 
-					std::cout << "[6] Insertar Alumno:" << std::endl;
+					std::cout << "[6] Insertar Alumno" << std::endl;
 					ag.insertar();
 
 					break;
 
 
 			case 7: 
-					std::cout << "[7] Borrar Alumno: " << std::endl;
+					std::cout << "[7] Borrar Alumno " << std::endl;
 					ag.eliminarAlumno();
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 8: 
-					std::cout << "[8] Gestionar líderes: " << std::endl;
+					std::cout << "[8] Gestionar líderes " << std::endl;
 					ag.gestionarLideres();
 
 					break;
@@ -163,12 +163,20 @@ int menu()
 	posicion++;
 
 	PLACE(posicion++,10);
+<<<<<<< HEAD
 	std::cout <<  "[1] Buscar Alumno";
+=======
+	std::cout <<  "[1] Buscar por dni del Alumno";
+
+	PLACE(posicion++,10);
+	std::cout << "[2] Buscar por apellido del alumno";
+>>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;
 
 	PLACE(posicion++,10);
+<<<<<<< HEAD
 	std::cout << "[2] Guardar copia de seguridad";
 
 	PLACE(posicion++,10);
@@ -182,6 +190,18 @@ int menu()
 
 	PLACE(posicion++,10);
 	std::cout <<  "[5] Modificar datos del Alumno";
+=======
+	std::cout << YELLOW << "[3] Cargar copia de seguridad";
+ 
+	PLACE(posicion++,10);
+	std::cout << YELLOW << "[4] Guardar copia de seguridad";
+
+	//////////////////////////////////////////////////////////////////////////////
+	posicion++;
+
+	PLACE(posicion++,10);
+	std::cout << RESET <<  "[5] Modificar datos del Alumno";
+>>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 
 	PLACE(posicion++,10);
 	std::cout << "[6] Insertar Alumno";
@@ -189,9 +209,12 @@ int menu()
 	PLACE(posicion++,10);
 	std::cout << "[7] Borrar Alumno";
 
+<<<<<<< HEAD
 	//////////////////////////////////////////////////////////////////////////////
 	posicion++;
 
+=======
+>>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 	PLACE(posicion++,10);
 	std::cout << "[8] Gestionar líderes";
 

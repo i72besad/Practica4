@@ -1,5 +1,3 @@
-//ClaseAgenda.cc realizada por Jorge Jesús Chaparro Ibarra
-//Métodos de la clase Agenda
 
 #include <iostream>
 #include <string>
@@ -120,6 +118,7 @@ void Agenda::insertar(){
 	
 	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
+<<<<<<< HEAD
 	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
 	cout << "DNI: ";
 	getline(cin,dni);
@@ -128,6 +127,20 @@ void Agenda::insertar(){
 		al.setDNI(dni);
 	}else{
 		cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
+=======
+	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
+	
+	while(comprobarDNI(dni)==false){
+		cout << "DNI: ";
+		getline(cin,dni);
+
+
+		if(comprobarDNI(dni)==true){
+			al.setDNI(dni);
+		}else{
+			cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
+		}
+>>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 	}
 	
 	cout << "Nombre: ";
@@ -187,7 +200,11 @@ void Agenda::insertar(){
 	}
 	
 	alumnos_.push_back(al);
+<<<<<<< HEAD
 	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO	
+=======
+	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
+>>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 }
 
 bool Agenda::comprobarDNI(string nuevo_dni){
@@ -467,6 +484,10 @@ int Agenda::buscarDNI() // devuelve la posicion donde esta el alumno, buscando p
 	cout<<"Error, el alumno no existe, ¿desea insertar un nuevo alumno?"<<endl;
 	cout<<"\nSí-->1   No-->0"<<endl;
 	cin>>opc;
+<<<<<<< HEAD
+=======
+	cin.ignore();
+>>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 
 	while(opc>1 || opc<0){
 		cout<<"Mal escrito, repita su opción:"<<endl;
@@ -499,9 +520,12 @@ int Agenda::buscarApellido(){
 	if(cont==1){
 		cout<<"Alumno encontrado"<<endl;
 		return auxi;
-	}else{
+	}if(cont>1){
 		cout<<"Error, más de un alumno con el mismo apellido, redirigiendo a buscar por DNI..."<<endl;
 		auxi=buscarDNI();
+		return auxi;
+	}else{
+		cout<<"Error, alumno no encontrado"<<endl;
 		return auxi;
 	}
 
@@ -527,6 +551,7 @@ void Agenda::eliminarAlumno()
 
 void Agenda::guardarEnFichero()
 {
+<<<<<<< HEAD
  	string nombreFichero;
  	string ponerBin;
 
@@ -671,100 +696,123 @@ void Agenda::cargar_backup(){
    		   alumnos_.push_back(aux);
 
   }
+=======
+
+	if(alumnos_.empty()){
+	
+		cout<<"No hay alumnos para guardar"<<endl;
+	
+	}else{
+ 	
+ 		string nombreFichero;
+ 		string ponerBin;
+
+		std::ofstream fich;
+	
+		cout<<"Introduzca el nombre del fichero"<<endl;
+	
+		getline(cin,nombreFichero);
+
+		ponerBin=nombreFichero+".bin";
+
+		fich.open(ponerBin.c_str(), ios::out | ios::binary);
+	
+		if(fich.fail())
+		{
+			std::cout << "Error al crear el fichero. "  << std::endl;
+		}
+		else
+		{
+	
+			int tam = alumnos_.size();
+		
+
+			for(int i=0; i<tam; i++){
+			fich << alumnos_[i].getDNI() << ",";
+			fich << alumnos_[i].getNombre() << ",";
+			fich << alumnos_[i].getApellidos() << ",";
+			fich << alumnos_[i].getTelefono() << ",";
+			fich << alumnos_[i].getDireccion() << ",";
+			fich << alumnos_[i].getEmail() << ",";
+			fich << alumnos_[i].getCursoMasAlto() << ",";
+			fich << alumnos_[i].getLider() << ";";
+		}
+
+	
+			fich.close();
+			cout<<"Fichero guardado con éxito"<<endl;
+		}
+>>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 	}
 }
-*/
+
+
 void Agenda::cargar_backup(){
 
-  string ruta;
-  fstream fichero;
+  
+	std::ifstream fich;
+	std::string aux;
+	std::string nombreFichero;
+	std::string conBin;
+	
+	string dni,nombre,apellidos,direccion,nacimiento,email;
+	int telefono,postal,cursomax,equipo;
+	int lider;
+	
+	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
-  Agenda ag;
+	cout << "Introduce el nombre del Fichero: " << endl;
+	getline(cin, nombreFichero);
 
-  int variable = -1;
+	conBin=nombreFichero+".bin";
 
-  char nombre[30], apellidos[30], fechanacimiento[30], email[30], direccion[30];
-  string nombrex, apellidosx, emailx, direccionx,postal,nacimiento;
-  int dnix, tlfx, grupox, cursox;
-  bool liderx;
-    Alumno aux(dnix,  nombrex,  apellidosx,  tlfx, emailx, direccionx,postal="", nacimiento="",  cursox, grupox,  liderx);
+	fich.open(conBin.c_str(), ios::in | ios::binary);
 
-
-while(variable == -1){
-  cout<<"Introduce la ruta o deja esta campo vacío y se cargará la ruta predeterminada: ";
-  setbuf(stdin , NULL);
-  getline(cin , ruta);
-
-
-
-  if(ruta.empty()){
-  fichero.open( "backup.bin" , ios::in | ios::binary);
-
-    if(!fichero){
-      cout<<"Error al abrir el back_up"<<endl;
-      variable = -1;
-    }
-    else{
-      cout<<"Exito al abrir el back_up"<<endl;
-      variable = 0;
-    }
-  }//cierro if grande
+	if(fich.fail()){
+		
+		std::cout << "Error al abrir el fichero"<< std::endl;
+	}else{
 
 
 
-  else{
-    fichero.open( ruta.c_str() , ios::in | ios::binary);
-
-      if(!fichero){
-        cout<<"Error al abrir el back_up"<<endl;
-        variable = -1;
-      }
-      else{
-        cout<<"Exito al abrir el back_up"<<endl;
-        variable = 0;
-      }
-    }//cierro else grande
-}
-
-
-
-//x = ag.getAlumnos();
-
-  while(fichero.read((char *)&dnix, sizeof(int))){
-    fichero.read((char *)&cursox, sizeof(int));
-    fichero.read((char *)&tlfx, sizeof(int));
-    fichero.read((char *)&grupox, sizeof(int));
-    fichero.read((char *)&nombre, 30);
-    fichero.read((char *)&apellidos, 30);
-    //fichero.read((char *)&fechanacimiento, 30);
-    fichero.read((char *)&email, 30);
-    fichero.read((char *)&direccion, 30);
-    fichero.read((char *)&liderx, sizeof(bool));
+	while (getline(fich,aux,',') && not fich.eof())
+	{	
+	
+			al.setDNI(aux);
+			getline(fich,aux,',');
+			al.setNombre(aux);
+			getline(fich,aux,',');
+			al.setApellidos(aux);
+			getline(fich,aux,',');
+			al.setTelefono(atoi(aux.c_str()));
+			getline(fich,aux,',');
+			al.setEmail(aux);
+			getline(fich,aux,',');
+			al.setDireccion(aux);
+			getline(fich,aux,',');
+			al.setPostal(atoi(aux.c_str()));
+			getline(fich,aux,',');
+			al.setNacimiento(aux);
+			getline(fich,aux,',');
+			al.setCursoMasAlto(atoi(aux.c_str()));
+			getline(fich,aux,',');
+			al.setEquipo(atoi(aux.c_str()));
+			getline(fich,aux,';');
+			al.setLider(atoi(aux.c_str()));
 
 
-    nombrex = nombre;
-    apellidosx = apellidos;
-    //fechanacimientox = fechanacimiento;
-    emailx = email;
-    direccionx = direccion;
+			alumnos_.push_back(al);
+			fich.close();
+			cout<<"Fichero cargado con éxito"<<endl;
 
-      aux.setDNI(dnix);
-      aux.setCursoMasAlto(cursox);
-      aux.setTelefono(tlfx);
-      aux.setEquipo(grupox);
-      aux.setNombre(nombrex);
-      aux.setApellidos(apellidosx);
-      //aux.setFecha_nacimiento(fechanacimientox);
-      aux.setEmail(emailx);
-      aux.setDireccion(direccionx);
-      aux.setLider(liderx);
+		}
+	}
 
-      alumnos_.push_back(aux);
-
-  }
-
+<<<<<<< HEAD
   fichero.close();
 //cout<<"Fichero cargado con exito"<<endl;
 >>>>>>> 3fc8928c39cb2a1f9a360a310d2291e0c0bda4bd
+=======
+>>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 
 }
