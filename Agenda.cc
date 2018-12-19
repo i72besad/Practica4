@@ -119,13 +119,17 @@ void Agenda::insertar(){
 	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
 	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
-	cout << "DNI: ";
-	getline(cin,dni);
+	
+	while(comprobarDNI(dni)==false){
+		cout << "DNI: ";
+		getline(cin,dni);
 
-	if(comprobarDNI(dni)==true){
-		al.setDNI(dni);
-	}else{
-		cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
+
+		if(comprobarDNI(dni)==true){
+			al.setDNI(dni);
+		}else{
+			cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
+		}
 	}
 	
 	cout << "Nombre: ";
@@ -565,6 +569,7 @@ void Agenda::guardarEnFichero()
 
 	
 		fich.close();
+		cout<<"Fichero guardado con éxito"<<endl;
 	}
 }
 
@@ -593,39 +598,41 @@ void Agenda::cargar_backup(){
 	if(fich.fail()){
 		
 		std::cout << "Error al abrir el fichero"<< std::endl;
-	}
+	}else{
 
 
 
 	while (getline(fich,aux,',') && not fich.eof())
 	{	
 	
-		al.setDNI(aux);
-		getline(fich,aux,',');
-		al.setNombre(aux);
-		getline(fich,aux,',');
-		al.setApellidos(aux);
-		getline(fich,aux,',');
-		al.setTelefono(atoi(aux.c_str()));
-		getline(fich,aux,',');
-		al.setEmail(aux);
-		getline(fich,aux,',');
-		al.setDireccion(aux);
-		getline(fich,aux,',');
-		al.setPostal(atoi(aux.c_str()));
-		getline(fich,aux,',');
-		al.setNacimiento(aux);
-		getline(fich,aux,',');
-		al.setCursoMasAlto(atoi(aux.c_str()));
-		getline(fich,aux,',');
-		al.setEquipo(atoi(aux.c_str()));
-		getline(fich,aux,';');
-		al.setLider(atoi(aux.c_str()));
+			al.setDNI(aux);
+			getline(fich,aux,',');
+			al.setNombre(aux);
+			getline(fich,aux,',');
+			al.setApellidos(aux);
+			getline(fich,aux,',');
+			al.setTelefono(atoi(aux.c_str()));
+			getline(fich,aux,',');
+			al.setEmail(aux);
+			getline(fich,aux,',');
+			al.setDireccion(aux);
+			getline(fich,aux,',');
+			al.setPostal(atoi(aux.c_str()));
+			getline(fich,aux,',');
+			al.setNacimiento(aux);
+			getline(fich,aux,',');
+			al.setCursoMasAlto(atoi(aux.c_str()));
+			getline(fich,aux,',');
+			al.setEquipo(atoi(aux.c_str()));
+			getline(fich,aux,';');
+			al.setLider(atoi(aux.c_str()));
 
 
-		alumnos_.push_back(al);
+			alumnos_.push_back(al);
+			fich.close();
+			cout<<"Fichero cargado con éxito"<<endl;
 
-
+		}
 	}
 
 
