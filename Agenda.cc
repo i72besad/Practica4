@@ -539,7 +539,7 @@ void Agenda::guardarEnFichero()
 	std::ofstream fich;
 	
 	cout<<"Introduzca el nombre del fichero"<<endl;
-	std::cin.ignore();
+	
 	getline(cin,nombreFichero);
 
 	ponerBin=nombreFichero+".bin";
