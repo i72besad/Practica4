@@ -21,8 +21,21 @@ int main(){
 
 	int opcion;
 	Agenda ag;
+	string usuario, password;
 
-if(ag.mainmenu()==true){
+	cout << "Introduce tu nombre de usuario: " << endl;
+	getline(cin, usuario);
+
+	cout << "Introduce tu contraseña: " << endl;
+	getline(cin, password);
+
+	if(ag.login(usuario, password)==true){
+		cout << "Logueado correctamente!\n" << endl;
+	}else{
+		cout << "Error de inicio de sesión.\n" << endl;
+	}
+
+if(ag.mainmenu(usuario, password)==true){
 
 	do{
 		// Se elige la opción del menún
@@ -57,14 +70,22 @@ if(ag.mainmenu()==true){
 
 			case 3: 
 					std::cout << "[3] Cargar copia de seguridad" << std::endl;
-						ag.cargar_backup();
+						if(ag.roles(usuario)==true){
+							ag.cargar_backup();
+						}else{
+							cout << ".:ERROR:.\nLo siento, no dispones de los permisos necesarios para realizar esta acción." << endl;
+						}
 
 					break;
 
 			//////////////////////////////////////////////////////////////////////////////
 			case 4: 
 				  	std::cout << "[4] Guardar copia de seguridad " << std::endl;
-				  	ag.guardarEnFichero();
+						if(ag.roles(usuario)==true){
+							ag.guardarEnFichero();
+						}else{
+							cout << ".:ERROR:.\nLo siento, no dispones de los permisos necesarios para realizar esta acción." << endl;
+						}
 
 					break;
 
