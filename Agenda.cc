@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -66,7 +65,6 @@ bool Agenda::login(){
     if (confirmation == 1){
         registerpassword(usuario);
     }
-
     else; {
         cout << "Lo siento, vuelve a intentarlo.\n" << endl;
         cin.clear();
@@ -74,17 +72,14 @@ bool Agenda::login(){
         registerme();
     }
 }
-
 void Agenda::registerpassword(string usuario){
 	string password, password2;
     cout << "Por favor, introduce la contraseña que deseas: " << endl;
     cin >> password;
     cin.ignore();
-
     cout << "Por favor, vuelve a introducir la contraseña: " << endl;
     cin >> password2;
     cin.ignore();
-
     if (password == password2){
         cin.clear();
         cin.ignore(10000,'\n');
@@ -96,11 +91,9 @@ void Agenda::registerpassword(string usuario){
         registerpassword(usuario);
     }
 }
-
 void Agenda::writetofile(string usuario, string password){
 	usuario_=usuario;
 	password_=password;
-
     ofstream writefile;
     string file = usuario+".txt";
     writefile.open(file.c_str());
@@ -118,16 +111,6 @@ void Agenda::insertar(){
 	
 	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
-<<<<<<< HEAD
-	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO
-	cout << "DNI: ";
-	getline(cin,dni);
-
-	if(comprobarDNI(dni)==true){
-		al.setDNI(dni);
-	}else{
-		cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
-=======
 	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
 	
 	while(comprobarDNI(dni)==false){
@@ -140,7 +123,6 @@ void Agenda::insertar(){
 		}else{
 			cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
 		}
->>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 	}
 	
 	cout << "Nombre: ";
@@ -200,11 +182,7 @@ void Agenda::insertar(){
 	}
 	
 	alumnos_.push_back(al);
-<<<<<<< HEAD
-	cout<<"En el sistema hay un total de "<<alumnos_.size()<<endl;//OJO	
-=======
 	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
->>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 }
 
 bool Agenda::comprobarDNI(string nuevo_dni){
@@ -484,10 +462,7 @@ int Agenda::buscarDNI() // devuelve la posicion donde esta el alumno, buscando p
 	cout<<"Error, el alumno no existe, ¿desea insertar un nuevo alumno?"<<endl;
 	cout<<"\nSí-->1   No-->0"<<endl;
 	cin>>opc;
-<<<<<<< HEAD
-=======
 	cin.ignore();
->>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 
 	while(opc>1 || opc<0){
 		cout<<"Mal escrito, repita su opción:"<<endl;
@@ -551,152 +526,6 @@ void Agenda::eliminarAlumno()
 
 void Agenda::guardarEnFichero()
 {
-<<<<<<< HEAD
- 	string nombreFichero;
- 	string ponerBin;
-
-	std::ofstream fich;
-	
-	cout<<"Introduzca el nombre del fichero"<<endl;
-	std::cin.ignore();
-	getline(cin,nombreFichero);
-
-	ponerBin=nombreFichero+".bin";
-
-	fich.open(ponerBin.c_str(), ios::out | ios::binary);
-	
-	if(fich.fail())
-	{
-		std::cout << "Error al crear el fichero. "  << std::endl;
-	}
-	else
-	{
-	
-		int tam = alumnos_.size();
-		
-
-		for(int i=0; i<tam; i++){
-		fich << alumnos_[i].getDNI() << ",";
-		fich << alumnos_[i].getNombre() << ",";
-		fich << alumnos_[i].getApellidos() << ",";
-		fich << alumnos_[i].getTelefono() << ",";
-		fich << alumnos_[i].getDireccion() << ",";
-		fich << alumnos_[i].getEmail() << ",";
-		fich << alumnos_[i].getCursoMasAlto() << ",";
-		fich << alumnos_[i].getLider() << ";";
-	}
-
-	
-		fich.close();
-	}
-}
-
-
-void Agenda::cargar_backup(){
-
-  
-	std::ifstream fich;
-<<<<<<< HEAD
-	std::string aux;
-	std::string nombreFichero;
-	std::string conBin;
-=======
-	
-	string nombreFichero;
-	Alumno aux;
-	 char nombre[30], apellidos[30], fechanacimiento[30], email[30], direccion[30];
-  string nombrex, apellidosx, fechanacimientox, emailx, direccionx;
-  int dnix, tlfx, grupox, cursox;
-  bool liderx;
-
->>>>>>> 3fc8928c39cb2a1f9a360a310d2291e0c0bda4bd
-	
-	string dni,nombre,apellidos,direccion,nacimiento,email;
-	int telefono,postal,cursomax,equipo;
-	int lider;
-	
-	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
-
-	cout << "Introduce el nombre del Fichero: " << endl;
-	getline(cin, nombreFichero);
-
-	conBin=nombreFichero+".bin";
-
-	fich.open(conBin.c_str(), ios::in | ios::binary);
-
-	if(fich.fail()){
-		
-		std::cout << "Error al abrir el fichero"<< std::endl;
-	}
-
-
-<<<<<<< HEAD
-
-	while (getline(fich,aux,',') && not fich.eof())
-	{	
-	
-		al.setDNI(aux);
-		getline(fich,aux,',');
-		al.setNombre(aux);
-		getline(fich,aux,',');
-		al.setApellidos(aux);
-		getline(fich,aux,',');
-		al.setTelefono(atoi(aux.c_str()));
-		getline(fich,aux,',');
-		al.setEmail(aux);
-		getline(fich,aux,',');
-		al.setDireccion(aux);
-		getline(fich,aux,',');
-		al.setPostal(atoi(aux.c_str()));
-		getline(fich,aux,',');
-		al.setNacimiento(aux);
-		getline(fich,aux,',');
-		al.setCursoMasAlto(atoi(aux.c_str()));
-		getline(fich,aux,',');
-		al.setEquipo(atoi(aux.c_str()));
-		getline(fich,aux,';');
-		al.setLider(atoi(aux.c_str()));
-
-
-		alumnos_.push_back(al);
-
-
-	}
-
-=======
-		while(fichero.read((char *)&dnix, sizeof(int))){
-		    fichero.read((char *)&cursox, sizeof(int));
-		    fichero.read((char *)&tlfx, sizeof(int));
- 		   fichero.read((char *)&grupox, sizeof(int));
-		    fichero.read((char *)&nombre, 30);
-		    fichero.read((char *)&apellidos, 30);
-		    fichero.read((char *)&fechanacimiento, 30);
-		    fichero.read((char *)&email, 30);
-		    fichero.read((char *)&direccion, 30);
-		    fichero.read((char *)&liderx, sizeof(bool));
-
-
- 		   nombrex = nombre;
- 		   apellidosx = apellidos;
- 		   fechanacimientox = fechanacimiento;
- 		   emailx = email;
- 		   direccionx = direccion;
-
-  		    aux.setDNI(dnix);
- 		     aux.setCurso(cursox);
-  		    aux.setTlf(tlfx);
- 		     aux.setGrupo(grupox);
- 		     aux.setNombre(nombrex);
- 		     aux.setApellidos(apellidosx);
- 		     aux.setFecha_nacimiento(fechanacimientox);
-   		   aux.setEmail(emailx);
-   		   aux.setDireccion(direccionx);
-   		   aux.setLider(liderx);
-
-   		   alumnos_.push_back(aux);
-
-  }
-=======
 
 	if(alumnos_.empty()){
 	
@@ -742,7 +571,6 @@ void Agenda::cargar_backup(){
 			fich.close();
 			cout<<"Fichero guardado con éxito"<<endl;
 		}
->>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
 	}
 }
 
@@ -807,12 +635,3 @@ void Agenda::cargar_backup(){
 
 		}
 	}
-
-<<<<<<< HEAD
-  fichero.close();
-//cout<<"Fichero cargado con exito"<<endl;
->>>>>>> 3fc8928c39cb2a1f9a360a310d2291e0c0bda4bd
-=======
->>>>>>> 414db7545109bec7bed08925397eea96e31e61a1
-
-}
