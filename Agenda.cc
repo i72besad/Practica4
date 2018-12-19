@@ -9,9 +9,9 @@
 
 using namespace std;
 
-bool Agenda::mainmenu(){
+bool Agenda::mainmenu(string usuario, string password){
 
-	if(login()==true){
+	if(login(usuario, password)==true){
 		return true;
 	}else{
 		return false;
@@ -20,15 +20,9 @@ bool Agenda::mainmenu(){
 }
 
 
-bool Agenda::login(){
-	string usuario, usuariotxt, password, aux;
-	bool encontrado=false;
+bool Agenda::login(string usuario, string password){
+	string usuariotxt, aux;
 	ifstream archivo_entrada;
-	cout << "Introduce tu nombre de usuario: " << endl;
-	getline(cin, usuario);
-
-	cout << "Introduce tu contraseña: " << endl;
-	getline(cin, password);
 
 	usuariotxt=usuario+".txt";
 
@@ -37,19 +31,20 @@ bool Agenda::login(){
 	if(archivo_entrada.is_open()){
 		while(getline(archivo_entrada, aux)){
 			if(aux.find(password) != string::npos){
-				encontrado==true;
-				cout << "Logueado correctamente!\n" << endl;
 				archivo_entrada.close();
 				return true;
+			}else{
+				archivo_entrada.close();
+				return false;
 			}
-		}if(encontrado==false){
-			cout << "Error de inicio de sesión.\n" << endl;
-			archivo_entrada.close();
-			return false;
 		}
-	} else{
-		cout << "Error: El fichero no existe.\n" << endl;
-		archivo_entrada.close();
+	}
+}	
+
+bool Agenda::roles(string usuario){
+	if(usuario=="IreLu"){
+		return true;
+	}else{
 		return false;
 	}
 }
@@ -112,77 +107,86 @@ void Agenda::insertar(){
 	Alumno al(dni,  nombre,  apellidos,  telefono, email, direccion,  postal,  nacimiento,  cursomax, equipo,  lider);
 
 	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
+
+	if(alumnos_.size()<=150){
 	
-	while(comprobarDNI(dni)==false){
-		cout << "DNI: ";
-		getline(cin,dni);
+		while(comprobarDNI(dni)==false){
+			cout << "DNI: ";
+			getline(cin,dni);
 
 
-		if(comprobarDNI(dni)==true){
-			al.setDNI(dni);
-		}else{
-			cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
+			if(comprobarDNI(dni)==true){
+				al.setDNI(dni);
+			}else{
+				cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
+			}
+		}
+	
+		cout << "Nombre: ";
+		getline(cin,nombre);
+
+		al.setNombre(nombre);
+
+	
+		cout << "Apellidos: ";
+		getline(cin,apellidos);
+
+		al.setApellidos(apellidos);
+
+	
+		cout << "Teléfono: ";
+		cin>>telefono;
+		cin.ignore();
+
+		al.setTelefono(telefono);
+
+
+		cout << "Dirección: ";
+		getline(cin,direccion);
+
+		al.setDireccion(direccion);
+
+		cout << "Codigo Postal: ";
+		cin>>postal;
+		cin.ignore();
+
+		al.setPostal(postal);
+
+		cout << "Fecha de nacimiento: ";
+		getline(cin,nacimiento);
+
+		al.setNacimiento(nacimiento);
+	
+		cout << "Email: ";
+		getline(cin,email);
+		al.setEmail(email);
+
+		cout << "Curso más Alto matriculado: ";
+		cin>>cursomax;
+		al.setCursoMasAlto(cursomax);
+
+		cout << "Número de equipo: ";
+		cin>>equipo;
+		al.setEquipo(equipo);
+
+		cout << "Líder de equipo:\n1-->Sí   0--->No\n";	
+		cin>>lider;
+		cin.ignore();
+		if(lider==1){
+			al.setLider(true);
+		}if(lider==0){
+			al.setLider(false);
+		}
+	
+		alumnos_.push_back(al);
+		cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
+	} else{
+		int elec;
+		cout <<".:ERROR:.\nSe ha alcanzando el número máximo de alumnos en la Base de Datos.\n¿Desea eliminar a algún alumno?\n1-->Sí    0--->No\n" << endl;
+		if(elec==1){
+			eliminarAlumno();
 		}
 	}
-	
-	cout << "Nombre: ";
-	getline(cin,nombre);
-
-	al.setNombre(nombre);
-
-	
-	cout << "Apellidos: ";
-	getline(cin,apellidos);
-
-	al.setApellidos(apellidos);
-
-	
-	cout << "Teléfono: ";
-	cin>>telefono;
-	cin.ignore();
-
-	al.setTelefono(telefono);
-
-
-	cout << "Dirección: ";
-	getline(cin,direccion);
-
-	al.setDireccion(direccion);
-
-	cout << "Codigo Postal: ";
-	cin>>postal;
-	cin.ignore();
-
-	al.setPostal(postal);
-
-	cout << "Fecha de nacimiento: ";
-	getline(cin,nacimiento);
-
-	al.setNacimiento(nacimiento);
-	
-	cout << "Email: ";
-	getline(cin,email);
-	al.setEmail(email);
-
-	cout << "Curso más Alto matriculado: ";
-	cin>>cursomax;
-	al.setCursoMasAlto(cursomax);
-
-	cout << "Número de equipo: ";
-	cin>>equipo;
-	al.setEquipo(equipo);
-
-	cout << "Líder de equipo: 1-->Sí   0--->No";	
-	cin>>lider;
-	cin.ignore();
-	if(lider==1){
-		al.setLider(true);
-	}if(lider==0){
-		al.setLider(false);
-	}
-	
-	alumnos_.push_back(al);
-	cout<<"En el sistema hay un total de "<<alumnos_.size()<<" alumnos.\n"<<endl;
 }
 
 bool Agenda::comprobarDNI(string nuevo_dni){
@@ -635,3 +639,4 @@ void Agenda::cargar_backup(){
 
 		}
 	}
+}
