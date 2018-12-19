@@ -28,8 +28,9 @@ public:
 	inline string getContra(){return password_;}
 
 	//Función Register
-	bool mainmenu();
-	bool login();
+	bool mainmenu(string usuario, string password);
+	bool login(string usuario, string password);
+	bool roles(string usuario);
 
 	//Funciones del Vector de alumnos
 	
