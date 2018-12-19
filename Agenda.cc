@@ -533,43 +533,51 @@ void Agenda::eliminarAlumno()
 
 void Agenda::guardarEnFichero()
 {
- 	string nombreFichero;
- 	string ponerBin;
 
-	std::ofstream fich;
+	if(alumnos_.empty()){
 	
-	cout<<"Introduzca el nombre del fichero"<<endl;
+		cout<<"No hay alumnos para guardar"<<endl;
 	
-	getline(cin,nombreFichero);
+	}else{
+ 	
+ 		string nombreFichero;
+ 		string ponerBin;
 
-	ponerBin=nombreFichero+".bin";
+		std::ofstream fich;
+	
+		cout<<"Introduzca el nombre del fichero"<<endl;
+	
+		getline(cin,nombreFichero);
 
-	fich.open(ponerBin.c_str(), ios::out | ios::binary);
+		ponerBin=nombreFichero+".bin";
+
+		fich.open(ponerBin.c_str(), ios::out | ios::binary);
 	
-	if(fich.fail())
-	{
-		std::cout << "Error al crear el fichero. "  << std::endl;
-	}
-	else
-	{
+		if(fich.fail())
+		{
+			std::cout << "Error al crear el fichero. "  << std::endl;
+		}
+		else
+		{
 	
-		int tam = alumnos_.size();
+			int tam = alumnos_.size();
 		
 
-		for(int i=0; i<tam; i++){
-		fich << alumnos_[i].getDNI() << ",";
-		fich << alumnos_[i].getNombre() << ",";
-		fich << alumnos_[i].getApellidos() << ",";
-		fich << alumnos_[i].getTelefono() << ",";
-		fich << alumnos_[i].getDireccion() << ",";
-		fich << alumnos_[i].getEmail() << ",";
-		fich << alumnos_[i].getCursoMasAlto() << ",";
-		fich << alumnos_[i].getLider() << ";";
-	}
+			for(int i=0; i<tam; i++){
+			fich << alumnos_[i].getDNI() << ",";
+			fich << alumnos_[i].getNombre() << ",";
+			fich << alumnos_[i].getApellidos() << ",";
+			fich << alumnos_[i].getTelefono() << ",";
+			fich << alumnos_[i].getDireccion() << ",";
+			fich << alumnos_[i].getEmail() << ",";
+			fich << alumnos_[i].getCursoMasAlto() << ",";
+			fich << alumnos_[i].getLider() << ";";
+		}
 
 	
-		fich.close();
-		cout<<"Fichero guardado con éxito"<<endl;
+			fich.close();
+			cout<<"Fichero guardado con éxito"<<endl;
+		}
 	}
 }
 
