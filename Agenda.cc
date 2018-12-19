@@ -571,9 +571,20 @@ void Agenda::cargar_backup(){
 
   
 	std::ifstream fich;
+<<<<<<< HEAD
 	std::string aux;
 	std::string nombreFichero;
 	std::string conBin;
+=======
+	
+	string nombreFichero;
+	Alumno aux;
+	 char nombre[30], apellidos[30], fechanacimiento[30], email[30], direccion[30];
+  string nombrex, apellidosx, fechanacimientox, emailx, direccionx;
+  int dnix, tlfx, grupox, cursox;
+  bool liderx;
+
+>>>>>>> 3fc8928c39cb2a1f9a360a310d2291e0c0bda4bd
 	
 	string dni,nombre,apellidos,direccion,nacimiento,email;
 	int telefono,postal,cursomax,equipo;
@@ -594,6 +605,7 @@ void Agenda::cargar_backup(){
 	}
 
 
+<<<<<<< HEAD
 
 	while (getline(fich,aux,',') && not fich.eof())
 	{	
@@ -626,5 +638,133 @@ void Agenda::cargar_backup(){
 
 	}
 
+=======
+		while(fichero.read((char *)&dnix, sizeof(int))){
+		    fichero.read((char *)&cursox, sizeof(int));
+		    fichero.read((char *)&tlfx, sizeof(int));
+ 		   fichero.read((char *)&grupox, sizeof(int));
+		    fichero.read((char *)&nombre, 30);
+		    fichero.read((char *)&apellidos, 30);
+		    fichero.read((char *)&fechanacimiento, 30);
+		    fichero.read((char *)&email, 30);
+		    fichero.read((char *)&direccion, 30);
+		    fichero.read((char *)&liderx, sizeof(bool));
+
+
+ 		   nombrex = nombre;
+ 		   apellidosx = apellidos;
+ 		   fechanacimientox = fechanacimiento;
+ 		   emailx = email;
+ 		   direccionx = direccion;
+
+  		    aux.setDNI(dnix);
+ 		     aux.setCurso(cursox);
+  		    aux.setTlf(tlfx);
+ 		     aux.setGrupo(grupox);
+ 		     aux.setNombre(nombrex);
+ 		     aux.setApellidos(apellidosx);
+ 		     aux.setFecha_nacimiento(fechanacimientox);
+   		   aux.setEmail(emailx);
+   		   aux.setDireccion(direccionx);
+   		   aux.setLider(liderx);
+
+   		   alumnos_.push_back(aux);
+
+  }
+	}
+}
+*/
+void Agenda::cargar_backup(){
+
+  string ruta;
+  fstream fichero;
+
+  Agenda ag;
+
+  int variable = -1;
+
+  char nombre[30], apellidos[30], fechanacimiento[30], email[30], direccion[30];
+  string nombrex, apellidosx, emailx, direccionx,postal,nacimiento;
+  int dnix, tlfx, grupox, cursox;
+  bool liderx;
+    Alumno aux(dnix,  nombrex,  apellidosx,  tlfx, emailx, direccionx,postal="", nacimiento="",  cursox, grupox,  liderx);
+
+
+while(variable == -1){
+  cout<<"Introduce la ruta o deja esta campo vacío y se cargará la ruta predeterminada: ";
+  setbuf(stdin , NULL);
+  getline(cin , ruta);
+
+
+
+  if(ruta.empty()){
+  fichero.open( "backup.bin" , ios::in | ios::binary);
+
+    if(!fichero){
+      cout<<"Error al abrir el back_up"<<endl;
+      variable = -1;
+    }
+    else{
+      cout<<"Exito al abrir el back_up"<<endl;
+      variable = 0;
+    }
+  }//cierro if grande
+
+
+
+  else{
+    fichero.open( ruta.c_str() , ios::in | ios::binary);
+
+      if(!fichero){
+        cout<<"Error al abrir el back_up"<<endl;
+        variable = -1;
+      }
+      else{
+        cout<<"Exito al abrir el back_up"<<endl;
+        variable = 0;
+      }
+    }//cierro else grande
+}
+
+
+
+//x = ag.getAlumnos();
+
+  while(fichero.read((char *)&dnix, sizeof(int))){
+    fichero.read((char *)&cursox, sizeof(int));
+    fichero.read((char *)&tlfx, sizeof(int));
+    fichero.read((char *)&grupox, sizeof(int));
+    fichero.read((char *)&nombre, 30);
+    fichero.read((char *)&apellidos, 30);
+    //fichero.read((char *)&fechanacimiento, 30);
+    fichero.read((char *)&email, 30);
+    fichero.read((char *)&direccion, 30);
+    fichero.read((char *)&liderx, sizeof(bool));
+
+
+    nombrex = nombre;
+    apellidosx = apellidos;
+    //fechanacimientox = fechanacimiento;
+    emailx = email;
+    direccionx = direccion;
+
+      aux.setDNI(dnix);
+      aux.setCursoMasAlto(cursox);
+      aux.setTelefono(tlfx);
+      aux.setEquipo(grupox);
+      aux.setNombre(nombrex);
+      aux.setApellidos(apellidosx);
+      //aux.setFecha_nacimiento(fechanacimientox);
+      aux.setEmail(emailx);
+      aux.setDireccion(direccionx);
+      aux.setLider(liderx);
+
+      alumnos_.push_back(aux);
+
+  }
+
+  fichero.close();
+//cout<<"Fichero cargado con exito"<<endl;
+>>>>>>> 3fc8928c39cb2a1f9a360a310d2291e0c0bda4bd
 
 }
