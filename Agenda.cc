@@ -348,17 +348,23 @@ void Agenda::MostrarTodos(){
 	int tam;
 	tam = tamVect();
 
-	for(int i=0;i<tam;i++){
-		cout<<"\n\nAlumno "<<i+1<<endl;
-		cout<<"\n\tDNI--> "<<alumnos_[i].getDNI()<<endl;
-		cout<<"\n\tNombre--> "<<alumnos_[i].getNombre()<<endl;
-		cout<<"\n\tApellidos--> "<<alumnos_[i].getApellidos()<<endl;
-		cout<<"\n\tTelefono--> "<<alumnos_[i].getTelefono()<<endl;
-		cout<<"\n\tDireccion--> "<<alumnos_[i].getDireccion()<<endl;
-		cout<<"\n\temail--> "<<alumnos_[i].getEmail()<<endl;
-		cout<<"\n\tCurso mas alto--> "<<alumnos_[i].getCursoMasAlto()<<endl;
-		cout<<"\n\tLider--> "<<alumnos_[i].getLider()<<endl;
-		cout<<"\n\tEquipo--> "<<alumnos_[i].getEquipo()<<endl;
+	if(alumnos_.empty()){
+
+		cout<<"Error, la base de datos está vacía"<<endl;
+	}else{
+
+		for(int i=0;i<tam;i++){
+			cout<<"\n\nAlumno "<<i+1<<endl;
+			cout<<"\n\tDNI--> "<<alumnos_[i].getDNI()<<endl;
+			cout<<"\n\tNombre--> "<<alumnos_[i].getNombre()<<endl;
+			cout<<"\n\tApellidos--> "<<alumnos_[i].getApellidos()<<endl;
+			cout<<"\n\tTelefono--> "<<alumnos_[i].getTelefono()<<endl;
+			cout<<"\n\tDireccion--> "<<alumnos_[i].getDireccion()<<endl;
+			cout<<"\n\temail--> "<<alumnos_[i].getEmail()<<endl;
+			cout<<"\n\tCurso mas alto--> "<<alumnos_[i].getCursoMasAlto()<<endl;
+			cout<<"\n\tLider--> "<<alumnos_[i].getLider()<<endl;
+			cout<<"\n\tEquipo--> "<<alumnos_[i].getEquipo()<<endl;
+		}
 	}
 }
 
