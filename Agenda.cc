@@ -169,7 +169,7 @@ void Agenda::insertar(){
 		cin>>equipo;
 		al.setEquipo(equipo);
 
-		cout << "Líder de equipo:\n1-->Sí   0--->No\n";	
+		cout << "Líder de equipo:\n1-->Sí   0--->No \n";	
 		cin>>lider;
 		cin.ignore();
 		if(lider==1){
@@ -239,9 +239,17 @@ void Agenda::ModificaAlumno(){
 
 			switch (opcion) {
 				case 1:
-					cout << "Introduce el nuevo DNI:  \n";
-					getline(cin, auxs);
-					alumnos_[pos].setDNI(auxs);
+					while(comprobarDNI(auxs)==false){
+						cout << "Introduce el nuevo DNI:  \n";
+						getline(cin, auxs);
+
+
+						if(comprobarDNI(auxs)==true){
+							alumnos_[pos].setDNI(auxs);
+						}else{
+							cout << ".:ERROR:.\nFormato de DNI incorrecto." << endl;
+						}
+					}
 					break;
 
 				case 2:
@@ -603,6 +611,7 @@ void Agenda::cargar_backup(){
 	if(fich.fail()){
 		
 		std::cout << "Error al abrir el fichero"<< std::endl;
+
 	}else{
 
 
