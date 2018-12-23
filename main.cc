@@ -49,6 +49,12 @@ if(ag.mainmenu(usuario, password)==true){
 		{
 			case 0: 
 					std::cout << INVERSE;
+					cout<<"Redireccionando a Guardar Copia de Seguridad antes de salir del sistema...\n"<<endl;
+					if(ag.roles(usuario)==true){
+							ag.guardarEnFichero();
+						}else{
+							cout << ".:ERROR:.\nLo siento, no dispones de los permisos necesarios para realizar esta acción." << endl;
+						}
 					std::cout << "Fin del programa" << std::endl;
 					std::cout << RESET;
 			break;
